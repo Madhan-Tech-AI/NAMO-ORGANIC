@@ -1,5 +1,5 @@
 import React from 'react';
-import { X, Trash2, ShoppingBag, ArrowRight, ShieldCheck, Truck, RotateCcw } from 'lucide-react';
+import { X, Trash2, ShoppingBag, ShieldCheck, Truck, RotateCcw, MessageCircle } from 'lucide-react';
 
 export interface CartItem {
   id: string;
@@ -26,15 +26,6 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
   onClearCart,
 }) => {
   if (!isOpen) return null;
-
-  // Calculate subtotal
-  const subtotal = items.reduce((acc, item) => {
-    const numeric = parseInt(item.price.replace(/[^\d]/g, ''), 10) || 0;
-    return acc + numeric * item.quantity;
-  }, 0);
-
-  const freeShippingThreshold = 999;
-  const progressPercent = Math.min(100, (subtotal / freeShippingThreshold) * 100);
 
   return (
     <div
@@ -110,18 +101,11 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
           </div>
         </div>
 
-        {/* Free Shipping Progress Indicator */}
-        <div style={{ background: '#F0F4E8', padding: '1rem', borderRadius: '14px', marginBottom: '1.5rem', border: '1px solid rgba(99, 141, 8, 0.2)' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.78rem', color: '#243810', marginBottom: '0.5rem' }}>
+        {/* Farm Direct Delivery Notice */}
+        <div style={{ background: '#F0F4E8', padding: '0.85rem 1rem', borderRadius: '14px', marginBottom: '1.5rem', border: '1px solid rgba(99, 141, 8, 0.2)' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.78rem', color: '#243810' }}>
             <Truck size={14} color="#4E6E10" />
-            {subtotal >= freeShippingThreshold ? (
-              <span style={{ color: '#243810', fontWeight: 700 }}>Unlocked FREE temperature-controlled courier delivery!</span>
-            ) : (
-              <span style={{ fontWeight: 600 }}>Add ₹{freeShippingThreshold - subtotal} more for FREE farm-to-table shipping</span>
-            )}
-          </div>
-          <div style={{ width: '100%', height: '6px', background: 'rgba(24, 36, 10, 0.1)', borderRadius: '3px', overflow: 'hidden' }}>
-            <div style={{ width: `${progressPercent}%`, height: '100%', background: '#4E6E10', transition: 'width 0.4s ease' }} />
+            <span style={{ color: '#243810', fontWeight: 700 }}>Direct Farm Dispatch · Pan India Delivery & Institutional Supply</span>
           </div>
         </div>
 
@@ -201,14 +185,20 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
 
         {/* Bottom Checkout Actions */}
         <div style={{ marginTop: '1rem', paddingTop: '1.2rem', borderTop: '1.5px solid rgba(24, 36, 10, 0.08)' }}>
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.2rem' }}>
-            <span style={{ color: '#687656', fontSize: '0.9rem', fontWeight: 600 }}>Estimated Subtotal</span>
-            <span style={{ color: '#18240A', fontSize: '1.5rem', fontWeight: 800 }}>₹{subtotal.toLocaleString()}</span>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.2rem', flexWrap: 'wrap', gap: '0.5rem' }}>
+            <span style={{ color: '#687656', fontSize: '0.88rem', fontWeight: 600 }}>Ordering Status</span>
+            <span style={{ color: '#2D500C', fontSize: '0.82rem', fontWeight: 800, backgroundColor: '#EAF4DC', padding: '0.3rem 0.75rem', borderRadius: '9999px' }}>
+              Direct Farm WhatsApp Order
+            </span>
           </div>
 
           <button
             disabled={items.length === 0}
-            onClick={() => alert(`Order initiated for ₹${subtotal.toLocaleString()}! Connecting to secure payment gateway...`)}
+            onClick={() => {
+              const summary = items.map((i) => `• ${i.name} (Qty: ${i.quantity})`).join('\n');
+              const msg = encodeURIComponent(`Hi NAMO Organic, I would like to place an order enquiry for the following basket items:\n\n${summary}\n\nPlease share price, bulk packaging options, and dispatch schedule.`);
+              window.open(`https://wa.me/919500164786?text=${msg}`, '_blank');
+            }}
             className="btn-primary"
             style={{
               width: '100%',
@@ -216,9 +206,14 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
               fontSize: '0.88rem',
               opacity: items.length === 0 ? 0.5 : 1,
               cursor: items.length === 0 ? 'not-allowed' : 'pointer',
+              backgroundColor: '#25D366',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              gap: '0.5rem',
             }}
           >
-            PROCEED TO HARVEST CHECKOUT <ArrowRight size={16} />
+            <MessageCircle size={18} /> ENQUIRE & ORDER VIA WHATSAPP
           </button>
         </div>
       </div>

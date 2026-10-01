@@ -10,7 +10,7 @@ interface ProductShowcaseProps {
 }
 
 export const ProductShowcase: React.FC<ProductShowcaseProps> = ({
-  onAddToCart,
+  onAddToCart: _onAddToCart,
   onOpenTraceabilityWithBatch,
 }) => {
   const products: Product[] = PRODUCTS.slice(0, 4);

@@ -4,7 +4,7 @@ interface EditorialPantryProps {
   onAddToCart: (productName: string, price: string) => void;
 }
 
-export const EditorialPantry: React.FC<EditorialPantryProps> = ({ onAddToCart }) => {
+export const EditorialPantry: React.FC<EditorialPantryProps> = ({ onAddToCart: _onAddToCart }) => {
   return (
     <section
       id="pantry"

@@ -21,24 +21,52 @@ export const ContactPage: React.FC = () => {
 
   const faqs = [
     {
-      q: 'How long do NAMO cold-pressed oils last in the kitchen pantry?',
-      a: 'Because our oils are cold-pressed below 42°C on traditional Vaagai timber and filtered naturally without chemical deodorizers, naturally occurring antioxidants like sesamol and vitamin E remain 100% active. Stored away from direct sunlight in our heavy amber glass bottles, they maintain peak freshness for 12 months.',
+      q: 'What is NAMO Organics and where is it based?',
+      a: "NAMO Organics is a certified organic products company based in Tamil Nadu, India, founded by Fathima Ali. We manufacture and supply a range of Panchakavya-based organic agricultural inputs, organic food products, and organic healthcare nutrition — all rooted in India's 5,000-year-old tradition of natural farming. Our products serve farmers, consumers, and institutional buyers across India and international markets including the Gulf region.",
     },
     {
-      q: 'Why does my NAMO raw forest honey crystallize over time?',
-      a: 'Natural crystallization is the single most definitive proof of authentic, raw, unheated honey! Commercial supermarket honeys are boiled at 70°C and ultra-filtered to destroy natural pollen so they never crystallize. Real raw honey retains living enzymes and flower pollen that naturally form smooth crystals. Simply warm the jar in a bowl of warm water if you prefer a liquid texture.',
+      q: 'What does "Panchakavya-based" mean and why does it matter?',
+      a: "Panchakavya refers to a formulation derived from five products of the native desi cow — cow dung, cow urine, cow milk, cow curd, and cow ghee — often combined with natural ingredients like jaggery, tender coconut, and banana. This combination has been used in Indian agriculture for over 5,000 years as a soil conditioner, natural fertilizer, and pest deterrent. Unlike synthetic fertilizers, Panchakavya-based inputs restore the soil's natural microbial life, improve water retention, and produce lasting fertility — without harming the land or the people who eat from it.",
     },
     {
-      q: 'What is the Vedic Bilona method for A2 cow ghee?',
-      a: 'Commercial ghee is made in huge dairy factories by separating raw milk cream in high-speed centrifugal separators. In contrast, the Vedic Bilona method begins by boiling pure indigenous Gir and Sahiwal A2 milk, converting it into cultured whole curd overnight, and churning it with two-way wooden bilona rods to obtain makkhan (butter), which is then slow-simmered on open flames.',
+      q: 'What organic agricultural products does NAMO Organics offer?',
+      a: 'NAMO Organics offers two primary agricultural inputs: an organic liquid fertilizer and an organic liquid pesticide, both Panchakavya-based and formulated to work together as a complete soil and crop management system. These are designed for use on paddy, vegetables, fruit trees, pulses, and cash crops. We also supply to international agricultural agencies and government bodies for large-scale deployment on degraded farmland.',
     },
     {
-      q: 'How do you ensure safe delivery of fragile glass bottles across India?',
-      a: 'We pack every glass bottle in custom-molded, 100% biodegradable corrugated cardboard air jackets and heavy-duty double-wall shippers. We guarantee zero breakage during transit — if any shipment arrives compromised, we send a replacement immediately at no charge.',
+      q: "How is NAMO's organic fertilizer different from chemical fertilizers?",
+      a: "Chemical fertilizers deliver a short burst of nutrients directly to the plant — but over time, they strip the soil of its natural microbial ecosystem, reduce water retention, and leave the land increasingly dependent on synthetic inputs. NAMO's organic fertilizer works differently. It feeds the soil's own microbial community, which in turn makes nutrients available to the plant naturally and continuously. The result is not just better yields — it is healthier, more resilient soil that improves season after season rather than degrading.",
     },
     {
-      q: 'Can I visit the NAMO partner organic farms and pressing units in Tamil Nadu?',
-      a: 'Yes! We actively welcome conscious consumers, doctors, chefs, and families to visit our partner farm clusters in Villupuram and Kaveri delta. Please submit a Farm Visit request in the form above at least two weeks in advance so our agrarian team can coordinate your visit.',
+      q: 'What organic food products does NAMO Organics offer?',
+      a: 'Our organic value-added food range includes certified organic rice, raw honey, cold-pressed oils, and organic tea — all sourced from farms using our own Panchakavya-based agricultural inputs. What you buy from our food range is grown on the same soil we have spent years restoring. No synthetic pesticides. No chemical fertilizers. No shortcuts.',
+    },
+    {
+      q: 'How is NAMO\'s organic food different from regular "natural" products sold elsewhere?',
+      a: 'The term "natural" is unregulated in India — any product can use it. NAMO\'s food products are sourced exclusively from FSSAI-certified organic farms. More importantly, they are grown on farmland that has been treated with our own Panchakavya inputs — meaning the soil health, the farming practices, and the certification chain are all under our direct oversight. We do not source from unknown third parties and relabel. What we sell, we have grown.',
+    },
+    {
+      q: 'What organic healthcare products does NAMO Organics offer?',
+      a: 'NAMO Organics offers two certified organic health nutrition products: a standard health mix (Sathu Maavu) for adults, and a paediatric health mix specially formulated for infants from 6 months and children up to 12 years. Both are sprouted grain blends with no added sugar, no artificial flavour, and no synthetic additives — made entirely from certified organic ingredients.',
+    },
+    {
+      q: "Is NAMO's paediatric health mix safe for infants?",
+      a: 'Yes. Our paediatric health mix is formulated specifically for infants from 6 months onwards and children up to 12 years. The grains are sprouted before processing — which breaks down complex starches into simpler, more easily digestible forms — making it gentle on developing digestive systems. There are no synthetic additives, no refined sugar, and no artificial flavouring of any kind. It is certified organic under FSSAI standards.',
+    },
+    {
+      q: 'Can I order NAMO Organics products online?',
+      a: 'Yes — our consumer food and healthcare products are available for online inquiry and order. For agricultural inputs, bulk orders, and institutional or government procurement, please contact us directly through our enquiry form or WhatsApp (+91 9500164786) and our team will revert with product specifications, pricing, and availability.',
+    },
+    {
+      q: 'Do you supply in bulk to farms, institutions, or government bodies?',
+      a: 'Yes. We regularly supply organic agricultural inputs in bulk to farms, agricultural cooperatives, and government agencies. We are registered on the Government e-Marketplace (GeM) for institutional procurement. For bulk enquiries, please use our contact form and select "Agricultural / Bulk Order" as your enquiry type — our team will respond within 24 hours.',
+    },
+    {
+      q: "Why is organic farming better for India's long-term food security?",
+      a: 'India has over 120 million hectares of degraded agricultural land — most of it damaged by decades of synthetic fertilizer use. Chemical inputs boost short-term yields but destroy the soil\'s natural microbial ecosystem over time, requiring ever-increasing doses to achieve the same output. This is a cycle that ends in non-productive land and farmer debt. Organic farming — particularly Panchakavya-based natural farming — reverses this cycle by restoring soil biology, improving water retention, and building long-term fertility. It is not just better for individual farms. It is the only sustainable path for Indian agriculture at a national scale.',
+    },
+    {
+      q: 'Is NAMO Organics aligned with any government initiative for organic farming?',
+      a: 'Yes. NAMO Organics is aligned with India\'s national push toward natural and organic farming, including the Government of India\'s Paramparagat Krishi Vikas Yojana (PKVY) and the broader Natural Farming Mission which promotes chemical-free agricultural practices. Our products are also registered on GeM for government procurement, making them directly accessible to state and central government agricultural programmes.',
     },
   ];
 

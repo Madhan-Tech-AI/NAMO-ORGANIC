@@ -30,20 +30,7 @@ export function App() {
   const [activeBatchCode, setActiveBatchCode] = useState('NAMO-SO-2026');
   const [isCartOpen, setIsCartOpen] = useState(false);
 
-  const [cartItems, setCartItems] = useState<CartItem[]>([
-    {
-      id: 'item-1',
-      name: 'Cold-Pressed Sesame Oil (500ml Glass Bottle)',
-      price: '₹420',
-      quantity: 1,
-    },
-    {
-      id: 'item-2',
-      name: 'Desi Cow A2 Cultured Ghee (500ml Glass Jar)',
-      price: '₹1,250',
-      quantity: 1,
-    },
-  ]);
+  const [cartItems, setCartItems] = useState<CartItem[]>([]);
 
   // Initialize Lenis smooth scroll
   useEffect(() => {

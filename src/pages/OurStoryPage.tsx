@@ -135,37 +135,33 @@ export const OurStoryPage: React.FC = () => {
                 lineHeight: 1.2,
               }}
             >
-              "Food is not an industrial product. It is a living covenant with the earth."
+              "This is not just a business. It is my service to the soil, to the farmer, and to the future of healthy food in India."
             </h2>
             <p style={{ fontSize: '1rem', lineHeight: 1.8, color: '#3D4A2D', marginBottom: '1.2rem' }}>
-              When we started NAMO, modern grocery shelves were overflowing with clear plastic bottles of refined oil bleached with synthetic chemicals, deodorized at high temperatures, and stripped of all nutrients. Ghee was manufactured from dry milk powder, and honey was adulterated with high-fructose corn syrups.
+              NAMO Organics was founded in Tamil Nadu by Mrs. Fathima Ali with a singular, uncompromising vision: to restore India's degraded agricultural soil through time-tested Panchakavya microbial inputs and to provide every Indian family with truly chemical-free, nutrient-dense natural food.
             </p>
             <p style={{ fontSize: '1rem', lineHeight: 1.8, color: '#3D4A2D', marginBottom: '1.8rem' }}>
-              We asked a simple question: What happened to the real food our grandmothers fed us? NAMO was founded to bring back pure, cold-pressed oils from traditional Vaagai wood presses, cultured A2 bilona ghee, and raw wild honey directly from forest tribes — verified with modern laboratory testing.
+              From partnering with 500+ acres of chemical-free farms across Tamil Nadu to feeding over 3,000+ conscious families and exporting to 4 Gulf countries, NAMO upholds ancient agrarian wisdom verified by ISO 9001:2015 and FSSAI standards.
             </p>
             <div style={{ display: 'flex', alignItems: 'center', gap: '1.2rem' }}>
-              <div
+              <img
+                src="/images/fathima.jpg"
+                alt="Mrs. Fathima Ali"
                 style={{
-                  width: '54px',
-                  height: '54px',
+                  width: '64px',
+                  height: '64px',
                   borderRadius: '50%',
-                  background: 'radial-gradient(circle, #7EBE22 0%, #243810 100%)',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  color: '#FFFFFF',
-                  fontWeight: 800,
-                  fontSize: '1.2rem',
+                  objectFit: 'cover',
+                  border: '2px solid #5B8C15',
+                  boxShadow: '0 4px 12px rgba(0,0,0,0.1)',
                 }}
-              >
-                FA
-              </div>
+              />
               <div>
                 <strong style={{ fontSize: '1.1rem', color: '#18240A', display: 'block' }}>
                   Mrs. Fathima Ali
                 </strong>
                 <span style={{ fontSize: '0.82rem', color: '#4E6E10', fontWeight: 700 }}>
-                  Founder & Managing Director, NAMO Organic
+                  Founder & Managing Director, NAMO Organic · Chennai, Tamil Nadu
                 </span>
               </div>
             </div>

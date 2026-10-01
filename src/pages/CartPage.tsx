@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { ShoppingBag, Trash2, ArrowRight, ShieldCheck, Truck, Check } from 'lucide-react';
+import { ShoppingBag, Trash2, ArrowRight, ShieldCheck, Truck, Check, MessageCircle } from 'lucide-react';
 import type { CartItem } from '../components/CartDrawer';
 
 interface CartPageProps {
@@ -16,34 +16,7 @@ export const CartPage: React.FC<CartPageProps> = ({
   onRemoveItem,
   onClearCart,
 }) => {
-  const [couponCode, setCouponCode] = useState('');
-  const [discountPercent, setDiscountPercent] = useState(0);
-  const [couponMessage, setCouponMessage] = useState('');
   const [orderPlaced, setOrderPlaced] = useState(false);
-
-  // Helper to parse price string like "₹420"
-  const parsePrice = (priceStr: string): number => {
-    return parseInt(priceStr.replace(/[^0-9]/g, ''), 10) || 0;
-  };
-
-  const subtotal = items.reduce((acc, curr) => acc + parsePrice(curr.price) * curr.quantity, 0);
-  const shipping = subtotal > 999 || subtotal === 0 ? 0 : 99;
-  const discountAmount = Math.round((subtotal * discountPercent) / 100);
-  const finalTotal = subtotal - discountAmount + shipping;
-
-  const handleApplyCoupon = () => {
-    const code = couponCode.trim().toUpperCase();
-    if (code === 'NAMO10' || code === 'FIRSTHARVEST') {
-      setDiscountPercent(10);
-      setCouponMessage('10% Farm Harvest Discount Applied! ✓');
-    } else if (code === 'PURE20') {
-      setDiscountPercent(20);
-      setCouponMessage('20% Festive Organic Discount Applied! ✓');
-    } else {
-      setDiscountPercent(0);
-      setCouponMessage('Invalid coupon code. Try NAMO10.');
-    }
-  };
 
   const handleCheckout = () => {
     setOrderPlaced(true);
@@ -227,9 +200,10 @@ export const CartPage: React.FC<CartPageProps> = ({
                       </button>
                     </div>
 
-                    <div style={{ textAlign: 'right', minWidth: '80px' }}>
-                      <span style={{ fontSize: '1.15rem', fontWeight: 800, color: '#18240A', display: 'block' }}>
-                        ₹{parsePrice(item.price) * item.quantity}
+                    <div style={{ textAlign: 'right', minWidth: '95px' }}>
+                      <span style={{ fontSize: '0.82rem', fontWeight: 800, color: '#4E6E10', display: 'inline-flex', alignItems: 'center', gap: '0.3rem' }}>
+                        <span style={{ width: '6px', height: '6px', borderRadius: '50%', backgroundColor: '#5B8C15', display: 'inline-block' }} />
+                        COMING SOON
                       </span>
                     </div>
 
@@ -284,66 +258,49 @@ export const CartPage: React.FC<CartPageProps> = ({
                 Order Summary
               </h3>
 
-              {/* Coupon Code Input */}
-              <div style={{ marginBottom: '1.8rem' }}>
-                <div style={{ display: 'flex', gap: '0.5rem' }}>
-                  <input
-                    type="text"
-                    placeholder="Enter Coupon (e.g. NAMO10)"
-                    value={couponCode}
-                    onChange={(e) => setCouponCode(e.target.value)}
-                    style={{
-                      flex: 1,
-                      padding: '0.75rem 1rem',
-                      borderRadius: '10px',
-                      border: '1px solid rgba(24, 36, 10, 0.15)',
-                      backgroundColor: '#F8F9F3',
-                      fontSize: '0.85rem',
-                      outline: 'none',
-                      textTransform: 'uppercase',
-                      fontWeight: 700,
-                    }}
-                  />
-                  <button
-                    onClick={handleApplyCoupon}
-                    className="btn-secondary"
-                    style={{ padding: '0.75rem 1.2rem', fontSize: '0.8rem' }}
-                  >
-                    APPLY
-                  </button>
-                </div>
-                {couponMessage && (
-                  <span
-                    style={{
-                      fontSize: '0.75rem',
-                      fontWeight: 700,
-                      marginTop: '0.4rem',
-                      display: 'block',
-                      color: discountPercent > 0 ? '#4E6E10' : '#BA3C3C',
-                    }}
-                  >
-                    {couponMessage}
-                  </span>
-                )}
+              {/* Bulk & Institutional Dispatch Info */}
+              <div
+                style={{
+                  marginBottom: '1.8rem',
+                  padding: '1.2rem',
+                  backgroundColor: '#F8F9F3',
+                  borderRadius: '14px',
+                  border: '1px solid rgba(24, 36, 10, 0.08)',
+                }}
+              >
+                <span
+                  style={{
+                    fontSize: '0.74rem',
+                    fontWeight: 800,
+                    color: '#4E6E10',
+                    textTransform: 'uppercase',
+                    letterSpacing: '0.08em',
+                    display: 'block',
+                    marginBottom: '0.4rem',
+                  }}
+                >
+                  Direct Farm & Institutional Dispatch
+                </span>
+                <p style={{ fontSize: '0.82rem', color: '#556345', lineHeight: 1.5, margin: 0 }}>
+                  For wholesale, institutional or GeM portal procurement, our agrarian desk connects directly with your procurement team via WhatsApp.
+                </p>
               </div>
 
-              {/* Cost Rows */}
+              {/* Fulfillment & Availability Details */}
               <div style={{ display: 'flex', flexDirection: 'column', gap: '0.8rem', marginBottom: '1.5rem' }}>
                 <div style={{ display: 'flex', justifyContent: 'space-between', color: '#3D4A2D', fontSize: '0.92rem' }}>
-                  <span>Pantry Subtotal</span>
-                  <strong>₹{subtotal}</strong>
+                  <span>Fulfillment Method</span>
+                  <strong style={{ color: '#4E6E10' }}>Direct Farm Dispatch</strong>
                 </div>
 
-                {discountAmount > 0 && (
-                  <div style={{ display: 'flex', justifyContent: 'space-between', color: '#4E6E10', fontSize: '0.92rem' }}>
-                    <span>Harvest Discount ({discountPercent}%)</span>
-                    <strong>-₹{discountAmount}</strong>
-                  </div>
-                )}
+                <div style={{ display: 'flex', justifyContent: 'space-between', color: '#3D4A2D', fontSize: '0.92rem' }}>
+                  <span>Quality Standard</span>
+                  <strong>ISO 9001 & FSSAI Certified</strong>
+                </div>
 
                 <div style={{ display: 'flex', justifyContent: 'space-between', color: '#3D4A2D', fontSize: '0.92rem' }}>
                   <span>Eco Glass Freight</span>
-                  <strong>{shipping === 0 ? <span style={{ color: '#4E6E10' }}>FREE</span> : `₹${shipping}`}</strong>
+                  <strong style={{ color: '#4E6E10' }}>Pan India Courier</strong>
                 </div>
 
                 <div
@@ -352,18 +309,23 @@ export const CartPage: React.FC<CartPageProps> = ({
                     justifyContent: 'space-between',
                     paddingTop: '1rem',
                     borderTop: '2px solid rgba(24, 36, 10, 0.08)',
-                    fontSize: '1.25rem',
+                    fontSize: '1.15rem',
                     fontWeight: 800,
                     color: '#18240A',
                   }}
                 >
-                  <span>Total Amount</span>
-                  <span>₹{finalTotal}</span>
+                  <span>Order Status</span>
+                  <span style={{ color: '#2D500C', fontSize: '0.95rem' }}>Online Ordering Coming Soon</span>
                 </div>
               </div>
 
               <button
-                onClick={handleCheckout}
+                onClick={() => {
+                  const summary = items.map((i) => `• ${i.name} (Qty: ${i.quantity})`).join('\n');
+                  const msg = encodeURIComponent(`Hi NAMO Organic, I would like to place an order enquiry for the following basket items:\n\n${summary}\n\nPlease share price, bulk packaging options, and dispatch schedule.`);
+                  window.open(`https://wa.me/919500164786?text=${msg}`, '_blank');
+                  handleCheckout();
+                }}
                 className="btn-primary"
                 style={{
                   width: '100%',
@@ -371,9 +333,13 @@ export const CartPage: React.FC<CartPageProps> = ({
                   fontSize: '0.95rem',
                   justifyContent: 'center',
                   marginBottom: '1.5rem',
+                  backgroundColor: '#25D366',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '0.5rem',
                 }}
               >
-                PROCEED TO CHECKOUT · ₹{finalTotal}
+                <MessageCircle size={18} /> SUBMIT BASKET ENQUIRY VIA WHATSAPP
               </button>
 
               <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', fontSize: '0.78rem', color: '#6B7959' }}>

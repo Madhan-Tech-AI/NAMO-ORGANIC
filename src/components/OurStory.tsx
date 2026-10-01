@@ -365,6 +365,7 @@ export const OurStory: React.FC = () => {
                   {cert}
                 </span>
               ))}
+            </div>
           </div>
         </div>
       </div>

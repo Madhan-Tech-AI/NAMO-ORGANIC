@@ -25,7 +25,7 @@ export const ProductsPage: React.FC<ProductsPageProps> = ({
 
   const [activeCategory, setActiveCategory] = useState<string>(initialCategory);
   const [searchQuery, setSearchQuery] = useState<string>('');
-  const [sortBy, setSortBy] = useState<'featured' | 'price-asc' | 'price-desc' | 'rating'>('featured');
+  const [sortBy, setSortBy] = useState<'featured' | 'name-asc' | 'rating'>('featured');
 
   useEffect(() => {
     const cat = searchParams.get('category') || 'all';
@@ -71,10 +71,8 @@ export const ProductsPage: React.FC<ProductsPageProps> = ({
   });
 
   // Sorting
-  if (sortBy === 'price-asc') {
-    filtered.sort((a, b) => a.priceNum - b.priceNum);
-  } else if (sortBy === 'price-desc') {
-    filtered.sort((a, b) => b.priceNum - a.priceNum);
+  if (sortBy === 'name-asc') {
+    filtered.sort((a, b) => a.name.localeCompare(b.name));
   } else if (sortBy === 'rating') {
     filtered.sort((a, b) => b.rating - a.rating);
   }
@@ -204,8 +202,7 @@ export const ProductsPage: React.FC<ProductsPageProps> = ({
               }}
             >
               <option value="featured">Sort: Featured</option>
-              <option value="price-asc">Price: Low to High</option>
-              <option value="price-desc">Price: High to Low</option>
+              <option value="name-asc">Name: A to Z</option>
               <option value="rating">Highest Rated</option>
             </select>
           </div>
