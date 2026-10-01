@@ -1,0 +1,280 @@
+/* ===================================================================
+   NAMO — Natural Agriculture Modern Organic
+   Design System & Cinematic Stylesheet (Light Luxury Editorial Theme)
+   =================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,600&family=Outfit:wght@200;300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
+
+:root {
+  /* Brand Natural Light Palette */
+  --bg-primary: #F8F9F3;
+  --bg-secondary: #F0F4E8;
+  --bg-card: #FFFFFF;
+  --bg-stone: #EFECE3;
+  
+  --deep-forest-green: #18240A;
+  --dark-olive: #293B14;
+  --olive-green: #4E6E10;
+  --fresh-green: #67A020;
+  --lime-green: #7EBE22;
+  
+  --text-primary: #18240A;
+  --text-secondary: #3D4A2D;
+  --text-muted: #6B7959;
+  
+  --border-light: rgba(99, 141, 8, 0.18);
+  --border-subtle: rgba(24, 36, 10, 0.08);
+
+  /* Typography */
+  --font-serif: 'Cormorant Garamond', Georgia, serif;
+  --font-display: 'Outfit', 'Plus Jakarta Sans', sans-serif;
+  --font-body: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+
+  /* Luxury Light Elevation Shadows */
+  --shadow-sm: 0 4px 15px rgba(24, 36, 10, 0.04);
+  --shadow-md: 0 16px 35px -10px rgba(24, 36, 10, 0.08);
+  --shadow-lg: 0 25px 60px -15px rgba(24, 36, 10, 0.12);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  scroll-behavior: auto;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  line-height: 1.6;
+}
+
+#root {
+  width: 100%;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  display: block;
+  text-align: left;
+}
+
+/* ===================================================================
+   Typography Utility Classes
+   =================================================================== */
+
+.font-serif {
+  font-family: var(--font-serif);
+}
+
+.font-display {
+  font-family: var(--font-display);
+}
+
+.font-body {
+  font-family: var(--font-body);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: var(--deep-forest-green);
+}
+
+.serif-italic {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 400;
+}
+
+/* ===================================================================
+   Subtle Organic Texture Overlay
+   =================================================================== */
+
+.film-grain {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.025;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+/* ===================================================================
+   Lenis Smooth Scrolling
+   =================================================================== */
+
+html.lenis, html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
+}
+
+/* ===================================================================
+   Parallax & 3D Layer Acceleration
+   =================================================================== */
+
+.parallax-layer {
+  will-change: transform;
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+}
+
+/* ===================================================================
+   Buttons & Tags (Light Luxury Editorial Aesthetic)
+   =================================================================== */
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  padding: 0.95rem 2.2rem;
+  background: #243810;
+  color: #FFFFFF;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 0.85rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  border-radius: 9999px;
+  border: 1px solid #354E18;
+  cursor: pointer;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 10px 25px -5px rgba(36, 56, 16, 0.3);
+  text-decoration: none;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px) scale(1.02);
+  background: #365518;
+  box-shadow: 0 15px 30px -5px rgba(54, 85, 24, 0.4);
+  color: #FFFFFF;
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  padding: 0.95rem 2rem;
+  background: #FFFFFF;
+  color: #18240A;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 0.85rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  border-radius: 9999px;
+  border: 1.5px solid rgba(24, 36, 10, 0.2);
+  cursor: pointer;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  text-decoration: none;
+  box-shadow: 0 4px 15px rgba(24, 36, 10, 0.04);
+}
+
+.btn-secondary:hover {
+  background: #F0F4E8;
+  border-color: #243810;
+  color: #243810;
+  transform: translateY(-2px);
+}
+
+.badge-organic {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.45rem 1.1rem;
+  background: #FFFFFF;
+  border: 1px solid rgba(99, 141, 8, 0.3);
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #3B5710;
+  box-shadow: 0 2px 10px rgba(24, 36, 10, 0.04);
+}
+
+/* ===================================================================
+   Custom Light Organic Scrollbar
+   =================================================================== */
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #F0F4E8;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #CAD6BC;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #7DA647;
+}
+
+/* ===================================================================
+   Atmosphere & Light Ray effects (Daylight Sunlight)
+   =================================================================== */
+
+.light-rays {
+  position: absolute;
+  top: -20%;
+  left: 30%;
+  width: 140%;
+  height: 140%;
+  pointer-events: none;
+  background: radial-gradient(circle at 50% 10%, rgba(255, 245, 200, 0.45) 0%, rgba(120, 180, 50, 0.1) 35%, transparent 70%);
+  mix-blend-mode: screen;
+}
+
+/* ===================================================================
+   Image Hover & Zoom
+   =================================================================== */
+
+.editorial-img-container {
+  overflow: hidden;
+  position: relative;
+}
+
+.editorial-img-container img {
+  transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.editorial-img-container:hover img {
+  transform: scale(1.04);
+}
