@@ -52,9 +52,11 @@ export const ProductsPage: React.FC<ProductsPageProps> = ({
     { id: 'ghee', label: 'A2 Cow Ghee' },
     { id: 'honey', label: 'Raw Wild Honey' },
     { id: 'jaggery', label: 'Jaggery & Sweeteners' },
-    { id: 'grains', label: 'Stone-Ground Flour' },
+    { id: 'grains', label: 'Heritage Grains & Flour' },
     { id: 'dals', label: 'Unpolished Dals' },
+    { id: 'spices', label: 'Spices & Masalas' },
     { id: 'nuts', label: 'Nuts & Dry Fruits' },
+    { id: 'sweets', label: 'Traditional Snacks' },
   ];
 
   // Filtering
@@ -345,14 +347,29 @@ export const ProductsPage: React.FC<ProductsPageProps> = ({
                     }}
                   >
                     <div>
-                      <span style={{ fontSize: '0.72rem', color: '#6B7959', display: 'block' }}>{p.volume}</span>
-                      <div style={{ display: 'flex', alignItems: 'baseline', gap: '0.5rem' }}>
-                        <span style={{ fontSize: '1.45rem', fontWeight: 800, color: '#18240A' }}>{p.price}</span>
-                        <span style={{ fontSize: '0.85rem', color: '#909D80', textDecoration: 'line-through' }}>{p.mrp}</span>
+                      <span style={{ fontSize: '0.72rem', color: '#6B7959', display: 'block', fontWeight: 600 }}>{p.volume}</span>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', marginTop: '0.2rem' }}>
+                        <span
+                          style={{
+                            display: 'inline-flex',
+                            alignItems: 'center',
+                            gap: '0.35rem',
+                            backgroundColor: '#EAF4DC',
+                            color: '#2D500C',
+                            fontSize: '0.74rem',
+                            fontWeight: 800,
+                            padding: '0.25rem 0.65rem',
+                            borderRadius: '9999px',
+                            letterSpacing: '0.03em',
+                          }}
+                        >
+                          <span style={{ width: '6px', height: '6px', borderRadius: '50%', backgroundColor: '#5B8C15', display: 'inline-block' }} />
+                          COMING SOON
+                        </span>
                       </div>
                     </div>
 
-                    <div style={{ display: 'flex', gap: '0.5rem' }}>
+                    <div style={{ display: 'flex', gap: '0.45rem', alignItems: 'center' }}>
                       <Link
                         to={`/product/${p.id}`}
                         style={{
@@ -373,9 +390,9 @@ export const ProductsPage: React.FC<ProductsPageProps> = ({
                       <button
                         onClick={() => onAddToCart(p.name, p.price)}
                         className="btn-primary"
-                        style={{ padding: '0.65rem 1.1rem', fontSize: '0.75rem' }}
+                        style={{ padding: '0.65rem 0.95rem', fontSize: '0.75rem' }}
                       >
-                        <ShoppingBag size={14} /> + ADD
+                        <ShoppingBag size={14} /> + BASKET
                       </button>
                     </div>
                   </div>

@@ -850,15 +850,18 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({
                   <p style={{ fontSize: '0.8rem', color: '#6B7959', marginBottom: '1.2rem', flex: 1 }}>
                     {p.subtitle}
                   </p>
-                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                    <span style={{ fontSize: '1.2rem', fontWeight: 800, color: '#18240A' }}>{p.price}</span>
-                    <button
-                      onClick={() => onAddToCart(p.name, p.price)}
+                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginTop: 'auto', paddingTop: '0.5rem' }}>
+                    <span style={{ fontSize: '0.84rem', fontWeight: 800, color: '#4E6E10', display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
+                      <span style={{ width: '6px', height: '6px', borderRadius: '50%', backgroundColor: '#5B8C15', display: 'inline-block' }} />
+                      COMING SOON
+                    </span>
+                    <Link
+                      to={`/product/${p.id}`}
                       className="btn-primary"
-                      style={{ padding: '0.5rem 1rem', fontSize: '0.75rem' }}
+                      style={{ padding: '0.5rem 1rem', fontSize: '0.75rem', textDecoration: 'none' }}
                     >
-                      + ADD
-                    </button>
+                      VIEW
+                    </Link>
                   </div>
                 </div>
               </div>
