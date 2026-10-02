@@ -96,13 +96,13 @@ export const HorizontalJourney: React.FC = () => {
       style={{
         position: 'relative',
         backgroundColor: '#F8F9F3',
-        padding: '7rem 2rem',
+        padding: 'clamp(3.5rem, 8vw, 7rem) clamp(1rem, 4vw, 2rem)',
         overflow: 'hidden',
       }}
     >
       <div style={{ maxWidth: '1400px', margin: '0 auto' }}>
         {/* Section Header */}
-        <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
+        <div style={{ textAlign: 'center', marginBottom: 'clamp(2rem, 4vw, 4rem)' }}>
           <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', marginBottom: '1rem' }}>
             <span className="badge-organic">
               <Compass size={14} color="#4E6E10" />
@@ -112,7 +112,7 @@ export const HorizontalJourney: React.FC = () => {
           <h2
             style={{
               fontFamily: 'var(--font-serif)',
-              fontSize: 'clamp(2.5rem, 4.5vw, 4.2rem)',
+              fontSize: 'clamp(2.2rem, 4.5vw, 4.2rem)',
               fontWeight: 400,
               lineHeight: 1.15,
               color: '#18240A',
@@ -123,11 +123,12 @@ export const HorizontalJourney: React.FC = () => {
           </h2>
           <p
             style={{
-              fontSize: '1.15rem',
+              fontSize: 'clamp(1rem, 2vw, 1.15rem)',
               color: '#556345',
               maxWidth: '680px',
               margin: '0 auto',
               fontWeight: 400,
+              lineHeight: 1.6,
             }}
           >
             Follow our 5-stage farm-to-family journey. From untouched organic soils to your table,
@@ -137,16 +138,18 @@ export const HorizontalJourney: React.FC = () => {
 
         {/* Stage Timeline Navigation Bar */}
         <div
+          className="touch-scroll-x"
           style={{
             display: 'flex',
             alignItems: 'center',
-            justifyContent: 'space-between',
+            justifyContent: 'flex-start',
             position: 'relative',
-            marginBottom: '3rem',
+            marginBottom: 'clamp(1.8rem, 4vw, 3rem)',
             borderBottom: '1.5px solid rgba(24, 36, 10, 0.1)',
             paddingBottom: '1rem',
             overflowX: 'auto',
-            gap: '1rem',
+            WebkitOverflowScrolling: 'touch',
+            gap: '0.8rem',
           }}
         >
           {stages.map((stage, idx) => {
@@ -162,7 +165,7 @@ export const HorizontalJourney: React.FC = () => {
                   display: 'flex',
                   alignItems: 'center',
                   gap: '0.75rem',
-                  padding: '0.8rem 1.2rem',
+                  padding: '0.75rem 1.1rem',
                   borderRadius: '12px',
                   transition: 'all 0.3s ease',
                   flexShrink: 0,
@@ -203,9 +206,9 @@ export const HorizontalJourney: React.FC = () => {
             position: 'relative',
             borderRadius: '28px',
             overflow: 'hidden',
-            minHeight: '620px',
+            minHeight: 'auto',
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(360px, 1fr))',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 340px), 1fr))',
             backgroundColor: '#FFFFFF',
             border: '1px solid rgba(99, 141, 8, 0.2)',
             boxShadow: '0 25px 60px -15px rgba(24, 36, 10, 0.08)',
@@ -215,7 +218,7 @@ export const HorizontalJourney: React.FC = () => {
           <div
             style={{
               position: 'relative',
-              minHeight: '380px',
+              minHeight: 'clamp(260px, 35vw, 380px)',
               overflow: 'hidden',
             }}
           >
@@ -243,8 +246,8 @@ export const HorizontalJourney: React.FC = () => {
             <div
               style={{
                 position: 'absolute',
-                top: '2.5rem',
-                left: '2.5rem',
+                top: 'clamp(1rem, 3vw, 2.5rem)',
+                left: 'clamp(1rem, 3vw, 2.5rem)',
                 display: 'flex',
                 alignItems: 'center',
                 gap: '1rem',
@@ -281,7 +284,7 @@ export const HorizontalJourney: React.FC = () => {
           {/* Right Editorial Storytelling Panel */}
           <div
             style={{
-              padding: 'clamp(2rem, 4vw, 4rem)',
+              padding: 'clamp(1.5rem, 4vw, 4rem)',
               display: 'flex',
               flexDirection: 'column',
               justifyContent: 'center',
@@ -307,7 +310,7 @@ export const HorizontalJourney: React.FC = () => {
             <h3
               style={{
                 fontFamily: 'var(--font-serif)',
-                fontSize: 'clamp(1.8rem, 2.8vw, 2.8rem)',
+                fontSize: 'clamp(1.6rem, 2.8vw, 2.8rem)',
                 fontWeight: 500,
                 lineHeight: 1.2,
                 color: '#18240A',
@@ -319,11 +322,11 @@ export const HorizontalJourney: React.FC = () => {
 
             <p
               style={{
-                fontSize: '1.05rem',
+                fontSize: 'clamp(0.95rem, 2vw, 1.05rem)',
                 lineHeight: 1.7,
                 color: '#3D4A2D',
                 fontWeight: 400,
-                marginBottom: '2rem',
+                marginBottom: '1.5rem',
               }}
             >
               {current.description}
@@ -336,7 +339,7 @@ export const HorizontalJourney: React.FC = () => {
                 borderLeft: '4px solid #4E6E10',
                 borderRadius: '0 12px 12px 0',
                 padding: '1.2rem 1.4rem',
-                marginBottom: '2.2rem',
+                marginBottom: '2rem',
               }}
             >
               <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.3rem' }}>
@@ -354,9 +357,9 @@ export const HorizontalJourney: React.FC = () => {
             <div
               style={{
                 display: 'grid',
-                gridTemplateColumns: 'repeat(2, 1fr)',
+                gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 180px), 1fr))',
                 gap: '0.8rem',
-                marginBottom: '2.5rem',
+                marginBottom: '2rem',
               }}
             >
               {current.specs.map((spec, sIdx) => (
@@ -381,7 +384,7 @@ export const HorizontalJourney: React.FC = () => {
             </div>
 
             {/* Next Stage Navigation Button */}
-            <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem' }}>
+            <div style={{ display: 'flex', alignItems: 'center', flexWrap: 'wrap', gap: '1rem' }}>
               <button
                 onClick={() => setActiveStageIndex((prev) => (prev + 1) % stages.length)}
                 className="btn-primary"

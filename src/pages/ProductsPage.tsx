@@ -78,7 +78,7 @@ export const ProductsPage: React.FC<ProductsPageProps> = ({
   }
 
   return (
-    <div style={{ backgroundColor: '#F8F9F3', minHeight: '100vh', padding: '4rem 2rem 7rem' }}>
+    <div style={{ backgroundColor: '#F8F9F3', minHeight: '100vh', padding: 'clamp(2rem, 5vw, 4rem) clamp(1rem, 3vw, 2rem) 6rem' }}>
       <div style={{ maxWidth: '1440px', margin: '0 auto' }}>
         {/* Page Hero Banner */}
         <div style={{ textAlign: 'center', marginBottom: '3.5rem' }}>
@@ -213,8 +213,8 @@ export const ProductsPage: React.FC<ProductsPageProps> = ({
           <div
             style={{
               display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))',
-              gap: '2.5rem',
+              gridTemplateColumns: 'repeat(auto-fill, minmax(min(100%, 300px), 1fr))',
+              gap: '2rem',
             }}
           >
             {filtered.map((p) => (

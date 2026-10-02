@@ -36,7 +36,7 @@ export const AuthModal: React.FC<AuthModalProps> = ({ isOpen, onClose }) => {
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        padding: '1.5rem',
+        padding: 'clamp(0.75rem, 3vw, 1.5rem)',
       }}
       onClick={onClose}
     >
@@ -46,8 +46,9 @@ export const AuthModal: React.FC<AuthModalProps> = ({ isOpen, onClose }) => {
           borderRadius: '20px',
           width: '100%',
           maxWidth: '440px',
+          maxHeight: '92vh',
+          overflowY: 'auto',
           boxShadow: '0 25px 60px -15px rgba(24, 36, 10, 0.35)',
-          overflow: 'hidden',
           border: '1px solid rgba(27, 77, 53, 0.15)',
           position: 'relative',
         }}

@@ -119,7 +119,7 @@ export const ProductShowcase: React.FC<ProductShowcaseProps> = ({
           <div
             style={{
               position: 'relative',
-              minHeight: '480px',
+              minHeight: 'clamp(280px, 45vh, 480px)',
               overflow: 'hidden',
               backgroundColor: '#F8F9F3',
             }}
@@ -149,8 +149,8 @@ export const ProductShowcase: React.FC<ProductShowcaseProps> = ({
             <div
               style={{
                 position: 'absolute',
-                top: '2rem',
-                left: '2rem',
+                top: 'clamp(1rem, 3vw, 2rem)',
+                left: 'clamp(1rem, 3vw, 2rem)',
                 display: 'flex',
                 flexDirection: 'column',
                 gap: '0.6rem',

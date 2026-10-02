@@ -23,7 +23,7 @@ export const QualityPromise: React.FC<QualityPromiseProps> = ({ onOpenTraceabili
         position: 'relative',
         backgroundColor: '#FFFFFF',
         color: '#18240A',
-        padding: '8rem 2rem',
+        padding: 'clamp(3.5rem, 8vw, 8rem) clamp(1rem, 4vw, 2rem)',
         overflow: 'hidden',
         borderTop: '1px solid rgba(24, 36, 10, 0.08)',
         borderBottom: '1px solid rgba(24, 36, 10, 0.08)',
@@ -31,7 +31,7 @@ export const QualityPromise: React.FC<QualityPromiseProps> = ({ onOpenTraceabili
     >
       <div style={{ maxWidth: '1360px', margin: '0 auto' }}>
         {/* Editorial Section Header */}
-        <div style={{ textAlign: 'center', marginBottom: '5rem' }}>
+        <div style={{ textAlign: 'center', marginBottom: 'clamp(2.5rem, 5vw, 5rem)' }}>
           <div
             style={{
               display: 'inline-flex',
@@ -61,7 +61,7 @@ export const QualityPromise: React.FC<QualityPromiseProps> = ({ onOpenTraceabili
           <h2
             style={{
               fontFamily: 'var(--font-serif)',
-              fontSize: 'clamp(2.6rem, 5vw, 4.5rem)',
+              fontSize: 'clamp(2.2rem, 5vw, 4.5rem)',
               fontWeight: 400,
               lineHeight: 1.12,
               color: '#18240A',
@@ -73,7 +73,7 @@ export const QualityPromise: React.FC<QualityPromiseProps> = ({ onOpenTraceabili
 
           <p
             style={{
-              fontSize: '1.2rem',
+              fontSize: 'clamp(1rem, 2vw, 1.2rem)',
               color: '#556345',
               maxWidth: '680px',
               margin: '0 auto',
@@ -89,10 +89,10 @@ export const QualityPromise: React.FC<QualityPromiseProps> = ({ onOpenTraceabili
         <div
           style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(340px, 1fr))',
-            gap: '2.5rem',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 320px), 1fr))',
+            gap: 'clamp(1.5rem, 3vw, 2.5rem)',
             alignItems: 'start',
-            marginBottom: '4.5rem',
+            marginBottom: 'clamp(2.5rem, 5vw, 4.5rem)',
           }}
         >
           {/* What We Reject */}
@@ -100,7 +100,7 @@ export const QualityPromise: React.FC<QualityPromiseProps> = ({ onOpenTraceabili
             style={{
               background: '#F8F9F3',
               borderRadius: '24px',
-              padding: '3rem 2.5rem',
+              padding: 'clamp(1.5rem, 4vw, 3rem) clamp(1.2rem, 3vw, 2.5rem)',
               boxShadow: '0 15px 35px -10px rgba(24, 36, 10, 0.04)',
               border: '1px solid rgba(24, 36, 10, 0.1)',
             }}
@@ -141,7 +141,7 @@ export const QualityPromise: React.FC<QualityPromiseProps> = ({ onOpenTraceabili
             style={{
               background: '#FFFFFF',
               borderRadius: '24px',
-              padding: '3rem 2.5rem',
+              padding: 'clamp(1.5rem, 4vw, 3rem) clamp(1.2rem, 3vw, 2.5rem)',
               boxShadow: '0 25px 45px -15px rgba(78, 110, 16, 0.12)',
               border: '2px solid rgba(78, 110, 16, 0.4)',
             }}
@@ -183,21 +183,21 @@ export const QualityPromise: React.FC<QualityPromiseProps> = ({ onOpenTraceabili
           style={{
             background: 'linear-gradient(135deg, #243810 0%, #18240A 100%)',
             borderRadius: '24px',
-            padding: '2.5rem 3rem',
+            padding: 'clamp(1.5rem, 4vw, 2.5rem) clamp(1.2rem, 4vw, 3rem)',
             color: '#FFFFFF',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'space-between',
             flexWrap: 'wrap',
-            gap: '2rem',
+            gap: '1.5rem',
             boxShadow: '0 20px 45px -10px rgba(24, 36, 10, 0.25)',
           }}
         >
-          <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 'clamp(1rem, 3vw, 1.5rem)' }}>
             <div
               style={{
-                width: '60px',
-                height: '60px',
+                width: '52px',
+                height: '52px',
                 borderRadius: '16px',
                 background: 'rgba(168, 230, 58, 0.2)',
                 border: '1px solid rgba(168, 230, 58, 0.4)',
@@ -207,13 +207,13 @@ export const QualityPromise: React.FC<QualityPromiseProps> = ({ onOpenTraceabili
                 flexShrink: 0,
               }}
             >
-              <FileText size={30} color="#A8E63A" />
+              <FileText size={26} color="#A8E63A" />
             </div>
             <div>
-              <h4 style={{ fontSize: '1.25rem', fontWeight: 700, color: '#FFFFFF', marginBottom: '0.2rem' }}>
+              <h4 style={{ fontSize: 'clamp(1.05rem, 2.5vw, 1.25rem)', fontWeight: 700, color: '#FFFFFF', marginBottom: '0.2rem' }}>
                 Inspect Real NABL Laboratory Test Reports
               </h4>
-              <p style={{ fontSize: '0.88rem', color: '#CAD6BC' }}>
+              <p style={{ fontSize: 'clamp(0.8rem, 1.8vw, 0.88rem)', color: '#CAD6BC', lineHeight: 1.5 }}>
                 Every single batch is tested for 180+ pesticide residues, heavy metals, and free fatty acid oxidation.
               </p>
             </div>

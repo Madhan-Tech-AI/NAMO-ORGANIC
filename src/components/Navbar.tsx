@@ -95,6 +95,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenCart, cartCount }) => {
           Right Corner: Track Your Order | Login / Signup
           =================================================================== */}
       <div
+        className="top-bar-container"
         style={{
           backgroundColor: '#795648',
           color: '#FFFFFF',
@@ -114,6 +115,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenCart, cartCount }) => {
         >
           {/* Left Corner: Exactly 3 Icons (Facebook, Instagram, Mail) */}
           <div
+            className="top-bar-socials"
             style={{
               display: 'flex',
               alignItems: 'center',
@@ -719,14 +721,15 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenCart, cartCount }) => {
           style={{
             position: 'fixed',
             inset: 0,
-            top: '80px',
+            top: isScrolled ? '96px' : '110px',
             backgroundColor: '#F8F9F3',
             zIndex: 1090,
             overflowY: 'auto',
-            padding: '2rem 1.5rem 4rem',
+            padding: '1.5rem 1.25rem 5rem',
             display: 'flex',
             flexDirection: 'column',
-            gap: '1.8rem',
+            gap: '1.5rem',
+            boxShadow: '0 25px 60px rgba(0, 0, 0, 0.2)',
           }}
         >
           {/* Mobile Search Bar */}
@@ -941,6 +944,19 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenCart, cartCount }) => {
           }
         }
         @media (max-width: 768px) {
+          .top-bar-container {
+            padding: 0.3rem 0.85rem !important;
+          }
+          .top-bar-socials {
+            display: none !important;
+          }
+          .middle-navbar-container {
+            padding: 0.25rem 0.85rem !important;
+          }
+          #navbar-center-logo {
+            height: 52px !important;
+            max-height: 52px !important;
+          }
           .product-bar-scrollable {
             overflow-x: auto;
             flex-wrap: nowrap !important;
@@ -951,6 +967,12 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenCart, cartCount }) => {
           }
           .product-bar-scrollable::-webkit-scrollbar {
             display: none;
+          }
+        }
+        @media (max-width: 480px) {
+          #navbar-center-logo {
+            height: 44px !important;
+            max-height: 44px !important;
           }
         }
       `}</style>

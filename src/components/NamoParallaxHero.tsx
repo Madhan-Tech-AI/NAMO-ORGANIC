@@ -595,7 +595,7 @@ export const NamoParallaxHero: React.FC = () => {
             zIndex: 10,
             maxWidth: '960px',
             margin: '0 auto',
-            padding: '7rem 1.5rem 2rem',
+            padding: isMobile ? '4.8rem 1rem 1.5rem' : '7rem 1.5rem 2rem',
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
@@ -609,25 +609,29 @@ export const NamoParallaxHero: React.FC = () => {
             style={{
               display: 'inline-flex',
               alignItems: 'center',
-              gap: '0.6rem',
+              gap: isMobile ? '0.4rem' : '0.6rem',
               backgroundColor: 'rgba(27, 77, 53, 0.85)',
               backdropFilter: 'blur(8px)',
               WebkitBackdropFilter: 'blur(8px)',
               border: '1.2px solid rgba(255, 219, 21, 0.5)',
               borderRadius: '9999px',
-              padding: '0.45rem 1.35rem',
-              marginBottom: '1.6rem',
+              padding: isMobile ? '0.35rem 0.9rem' : '0.45rem 1.35rem',
+              marginBottom: isMobile ? '1rem' : '1.6rem',
               boxShadow: '0 4px 20px rgba(0, 0, 0, 0.3)',
+              maxWidth: '92vw',
             }}
           >
-            <Sparkles size={14} color="#FFDB15" />
+            <Sparkles size={isMobile ? 12 : 14} color="#FFDB15" />
             <span
               style={{
                 color: '#FFDB15',
-                fontSize: '0.74rem',
+                fontSize: isMobile ? '0.65rem' : '0.74rem',
                 fontWeight: 800,
-                letterSpacing: '0.16em',
+                letterSpacing: isMobile ? '0.08em' : '0.16em',
                 textTransform: 'uppercase',
+                whiteSpace: 'nowrap',
+                overflow: 'hidden',
+                textOverflow: 'ellipsis',
               }}
             >
               PURE FOREST HARVESTS • SINGLE-ORIGIN VEDIC SOILS
@@ -636,13 +640,14 @@ export const NamoParallaxHero: React.FC = () => {
 
           {/* Main Hero Headline */}
           <h1
+            className="hero-main-title"
             style={{
               fontFamily: 'var(--font-serif, "Cinzel", "Playfair Display", Georgia, serif)',
-              fontSize: 'clamp(2.8rem, 6.5vw, 5.6rem)',
+              fontSize: isMobile ? 'clamp(2.1rem, 8.5vw, 3.2rem)' : 'clamp(2.8rem, 6.5vw, 5.6rem)',
               fontWeight: 600,
-              letterSpacing: '0.18em',
+              letterSpacing: isMobile ? '0.08em' : '0.18em',
               color: '#FFFFFF',
-              margin: '0 0 0.9rem 0',
+              margin: '0 0 0.8rem 0',
               lineHeight: 1.12,
               textShadow: '0 4px 30px rgba(0, 0, 0, 0.7), 0 2px 8px rgba(0, 0, 0, 0.5)',
               textTransform: 'uppercase',

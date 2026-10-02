@@ -122,7 +122,7 @@ export const FarmersSection: React.FC = () => {
             boxShadow: '0 25px 60px -15px rgba(24, 36, 10, 0.15)',
             border: '1px solid rgba(99, 141, 8, 0.25)',
             marginBottom: '4.5rem',
-            height: 'clamp(420px, 55vh, 680px)',
+            height: 'clamp(320px, 50vh, 680px)',
             backgroundColor: '#F0F4E8',
           }}
         >

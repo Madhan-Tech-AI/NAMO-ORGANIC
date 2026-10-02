@@ -49,7 +49,7 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
           borderLeft: '1px solid rgba(24, 36, 10, 0.1)',
           display: 'flex',
           flexDirection: 'column',
-          padding: '2rem',
+          padding: 'clamp(1.2rem, 3vw, 2rem)',
           boxShadow: '-20px 0 50px rgba(24, 36, 10, 0.12)',
           position: 'relative',
         }}

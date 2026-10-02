@@ -115,8 +115,8 @@ export const OurStoryPage: React.FC = () => {
             boxShadow: '0 15px 40px rgba(24, 36, 10, 0.06)',
             border: '1px solid rgba(99, 141, 8, 0.2)',
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
-            gap: '3.5rem',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 320px), 1fr))',
+            gap: '3rem',
             alignItems: 'center',
             marginBottom: '5rem',
           }}
@@ -143,7 +143,7 @@ export const OurStoryPage: React.FC = () => {
             <p style={{ fontSize: '1rem', lineHeight: 1.8, color: '#3D4A2D', marginBottom: '1.8rem' }}>
               From partnering with 500+ acres of chemical-free farms across Tamil Nadu to feeding over 3,000+ conscious families and exporting to 4 Gulf countries, NAMO upholds ancient agrarian wisdom verified by ISO 9001:2015 and FSSAI standards.
             </p>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '1.2rem' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '1.2rem', flexWrap: 'wrap' }}>
               <img
                 src="/images/fathima.jpg"
                 alt="Mrs. Fathima Ali"
@@ -178,15 +178,15 @@ export const OurStoryPage: React.FC = () => {
             <div
               style={{
                 position: 'absolute',
-                bottom: '-1.5rem',
-                left: '2rem',
-                right: '2rem',
+                bottom: '-1.2rem',
+                left: 'clamp(0.75rem, 2vw, 2rem)',
+                right: 'clamp(0.75rem, 2vw, 2rem)',
                 backgroundColor: '#FFDB15',
                 color: '#18240A',
-                padding: '1rem 1.4rem',
+                padding: '0.8rem 1.2rem',
                 borderRadius: '14px',
                 fontWeight: 800,
-                fontSize: '0.85rem',
+                fontSize: '0.82rem',
                 boxShadow: '0 8px 20px rgba(0,0,0,0.15)',
                 textAlign: 'center',
               }}

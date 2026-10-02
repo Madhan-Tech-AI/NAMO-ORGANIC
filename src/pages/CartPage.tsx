@@ -76,14 +76,14 @@ export const CartPage: React.FC<CartPageProps> = ({
   }
 
   return (
-    <div style={{ backgroundColor: '#F8F9F3', minHeight: '100vh', padding: '4rem 2rem 7rem' }}>
+    <div style={{ backgroundColor: '#F8F9F3', minHeight: '100vh', padding: 'clamp(2rem, 5vw, 4rem) clamp(1rem, 3vw, 2rem) clamp(3rem, 6vw, 7rem)' }}>
       <div style={{ maxWidth: '1300px', margin: '0 auto' }}>
-        <div style={{ marginBottom: '3rem' }}>
+        <div style={{ marginBottom: 'clamp(1.5rem, 4vw, 3rem)' }}>
           <span className="badge-organic">YOUR ORGANIC PANTRY</span>
           <h1
             style={{
               fontFamily: 'var(--font-serif)',
-              fontSize: 'clamp(2.4rem, 4vw, 3.5rem)',
+              fontSize: 'clamp(2rem, 4vw, 3.5rem)',
               color: '#18240A',
               marginTop: '0.6rem',
             }}
@@ -97,14 +97,14 @@ export const CartPage: React.FC<CartPageProps> = ({
             style={{
               backgroundColor: '#FFFFFF',
               borderRadius: '24px',
-              padding: '5rem 2rem',
+              padding: 'clamp(3rem, 6vw, 5rem) clamp(1.2rem, 4vw, 2rem)',
               textAlign: 'center',
               border: '1px solid rgba(24, 36, 10, 0.08)',
               boxShadow: '0 10px 30px rgba(0,0,0,0.04)',
             }}
           >
             <ShoppingBag size={48} color="#8A9978" style={{ margin: '0 auto 1.5rem' }} />
-            <h2 style={{ fontSize: '1.8rem', color: '#18240A', marginBottom: '0.8rem' }}>
+            <h2 style={{ fontSize: 'clamp(1.5rem, 3.5vw, 1.8rem)', color: '#18240A', marginBottom: '0.8rem' }}>
               Your basket is currently empty
             </h2>
             <p style={{ color: '#556345', marginBottom: '2rem' }}>
@@ -118,8 +118,8 @@ export const CartPage: React.FC<CartPageProps> = ({
           <div
             style={{
               display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(360px, 1fr))',
-              gap: '3rem',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 340px), 1fr))',
+              gap: 'clamp(1.5rem, 3vw, 3rem)',
               alignItems: 'start',
             }}
           >
@@ -128,7 +128,7 @@ export const CartPage: React.FC<CartPageProps> = ({
               style={{
                 backgroundColor: '#FFFFFF',
                 borderRadius: '24px',
-                padding: '2rem',
+                padding: 'clamp(1.2rem, 3vw, 2rem)',
                 border: '1px solid rgba(99, 141, 8, 0.2)',
                 boxShadow: '0 10px 30px rgba(0,0,0,0.04)',
               }}
@@ -249,7 +249,7 @@ export const CartPage: React.FC<CartPageProps> = ({
               style={{
                 backgroundColor: '#FFFFFF',
                 borderRadius: '24px',
-                padding: '2rem',
+                padding: 'clamp(1.2rem, 3vw, 2rem)',
                 border: '1px solid rgba(99, 141, 8, 0.2)',
                 boxShadow: '0 10px 30px rgba(0,0,0,0.04)',
               }}

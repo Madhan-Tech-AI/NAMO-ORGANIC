@@ -56,14 +56,14 @@ export const OurStory: React.FC = () => {
       style={{
         position: 'relative',
         backgroundColor: '#FFFFFF',
-        padding: '7rem 2rem',
+        padding: 'clamp(3.5rem, 8vw, 7rem) clamp(1rem, 4vw, 2rem)',
         overflow: 'hidden',
         borderTop: '1px solid rgba(24, 36, 10, 0.08)',
       }}
     >
       <div style={{ maxWidth: '1440px', margin: '0 auto' }}>
         {/* Section Header */}
-        <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
+        <div style={{ textAlign: 'center', marginBottom: 'clamp(2rem, 4vw, 4rem)' }}>
           <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', marginBottom: '1rem' }}>
             <span className="badge-organic">
               <History size={14} color="#4E6E10" />
@@ -73,7 +73,7 @@ export const OurStory: React.FC = () => {
           <h2
             style={{
               fontFamily: 'var(--font-serif)',
-              fontSize: 'clamp(2.5rem, 4.5vw, 4.2rem)',
+              fontSize: 'clamp(2.2rem, 4.5vw, 4.2rem)',
               fontWeight: 400,
               lineHeight: 1.15,
               color: '#18240A',
@@ -84,7 +84,7 @@ export const OurStory: React.FC = () => {
           </h2>
           <p
             style={{
-              fontSize: '1.15rem',
+              fontSize: 'clamp(1.05rem, 2vw, 1.15rem)',
               color: '#2C3B1C',
               maxWidth: '750px',
               margin: '0 auto 1.5rem',
@@ -98,7 +98,7 @@ export const OurStory: React.FC = () => {
           </p>
           <p
             style={{
-              fontSize: '1.05rem',
+              fontSize: 'clamp(0.95rem, 1.8vw, 1.05rem)',
               color: '#556345',
               maxWidth: '700px',
               margin: '0 auto',
@@ -116,9 +116,9 @@ export const OurStory: React.FC = () => {
             background: '#F0F4E8',
             border: '1.5px solid rgba(78, 110, 16, 0.3)',
             borderRadius: '24px',
-            padding: '2.5rem 2rem',
+            padding: 'clamp(1.5rem, 4vw, 2.5rem) clamp(1rem, 3vw, 2rem)',
             textAlign: 'center',
-            marginBottom: '4.5rem',
+            marginBottom: 'clamp(2.5rem, 5vw, 4.5rem)',
             boxShadow: '0 15px 35px -10px rgba(24, 36, 10, 0.05)',
           }}
         >
@@ -138,7 +138,7 @@ export const OurStory: React.FC = () => {
           <h3
             style={{
               fontFamily: 'var(--font-serif)',
-              fontSize: 'clamp(1.8rem, 3.2vw, 3.2rem)',
+              fontSize: 'clamp(1.6rem, 3.2vw, 3.2rem)',
               fontWeight: 500,
               letterSpacing: '0.04em',
               color: '#18240A',
@@ -153,13 +153,13 @@ export const OurStory: React.FC = () => {
         <div
           style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
-            gap: '3.5rem',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 300px), 1fr))',
+            gap: 'clamp(1.5rem, 4vw, 3.5rem)',
             alignItems: 'center',
           }}
         >
           {/* Left: Era Timeline Navigation */}
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '1.2rem' }}>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
             {eras.map((era, index) => {
               const isSelected = index === selectedEra;
               return (
@@ -170,7 +170,7 @@ export const OurStory: React.FC = () => {
                     background: isSelected ? '#243810' : '#F8F9F3',
                     border: isSelected ? '1px solid #243810' : '1px solid rgba(24, 36, 10, 0.08)',
                     borderRadius: '18px',
-                    padding: '1.6rem',
+                    padding: 'clamp(1rem, 2.5vw, 1.6rem)',
                     cursor: 'pointer',
                     transition: 'all 0.3s ease',
                     boxShadow: isSelected ? '0 10px 25px -5px rgba(36, 56, 16, 0.25)' : 'none',
@@ -208,7 +208,7 @@ export const OurStory: React.FC = () => {
               backgroundColor: '#F8F9F3',
               border: '1px solid rgba(99, 141, 8, 0.25)',
               boxShadow: '0 25px 60px -15px rgba(24, 36, 10, 0.12)',
-              minHeight: '480px',
+              minHeight: 'clamp(320px, 45vw, 480px)',
             }}
           >
             <img
@@ -216,7 +216,7 @@ export const OurStory: React.FC = () => {
               alt={active.title}
               style={{
                 width: '100%',
-                height: '480px',
+                height: 'clamp(320px, 45vw, 480px)',
                 objectFit: 'cover',
                 display: 'block',
                 transition: 'all 0.6s ease',
@@ -232,9 +232,9 @@ export const OurStory: React.FC = () => {
             <div
               style={{
                 position: 'absolute',
-                bottom: '2.5rem',
-                left: '2.5rem',
-                right: '2.5rem',
+                bottom: 'clamp(1.2rem, 3vw, 2.5rem)',
+                left: 'clamp(1.2rem, 3vw, 2.5rem)',
+                right: 'clamp(1.2rem, 3vw, 2.5rem)',
               }}
             >
               <span
@@ -252,10 +252,10 @@ export const OurStory: React.FC = () => {
               >
                 ERA SPOTLIGHT
               </span>
-              <h3 style={{ fontFamily: 'var(--font-serif)', fontSize: '1.8rem', color: '#FFFFFF', marginBottom: '0.6rem' }}>
+              <h3 style={{ fontFamily: 'var(--font-serif)', fontSize: 'clamp(1.4rem, 3vw, 1.8rem)', color: '#FFFFFF', marginBottom: '0.6rem' }}>
                 {active.title}
               </h3>
-              <p style={{ fontSize: '0.92rem', color: '#EDE8DC', lineHeight: 1.6 }}>
+              <p style={{ fontSize: '0.9rem', color: '#EDE8DC', lineHeight: 1.6 }}>
                 {active.detail}
               </p>
             </div>
@@ -265,14 +265,14 @@ export const OurStory: React.FC = () => {
         {/* Founder & Managing Director Spotlight */}
         <div
           style={{
-            marginTop: '5rem',
+            marginTop: 'clamp(3rem, 6vw, 5rem)',
             backgroundColor: '#F8F9F3',
             borderRadius: '28px',
             border: '1px solid rgba(99, 141, 8, 0.25)',
-            padding: 'clamp(2rem, 5vw, 4rem)',
+            padding: 'clamp(1.5rem, 4vw, 4rem)',
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
-            gap: '3rem',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))',
+            gap: 'clamp(1.5rem, 4vw, 3rem)',
             alignItems: 'center',
             boxShadow: '0 20px 45px -10px rgba(24, 36, 10, 0.06)',
           }}

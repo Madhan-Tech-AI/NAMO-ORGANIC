@@ -67,6 +67,8 @@ export const EditorialPantry: React.FC<EditorialPantryProps> = ({ onAddToCart: _
                 display: 'flex',
                 justifyContent: 'space-between',
                 alignItems: 'center',
+                flexWrap: 'wrap',
+                gap: '0.6rem',
               }}
             >
               <span style={{ fontSize: '0.75rem', letterSpacing: '0.15em', color: '#A8E63A', fontWeight: 800 }}>
@@ -343,6 +345,8 @@ export const EditorialPantry: React.FC<EditorialPantryProps> = ({ onAddToCart: _
                 display: 'flex',
                 justifyContent: 'space-between',
                 alignItems: 'center',
+                flexWrap: 'wrap',
+                gap: '0.6rem',
               }}
             >
               <span style={{ fontSize: '0.75rem', letterSpacing: '0.15em', color: '#A8E63A', fontWeight: 800 }}>

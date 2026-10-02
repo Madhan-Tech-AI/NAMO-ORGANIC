@@ -73,7 +73,7 @@ export const FarmersPage: React.FC = () => {
         style={{
           backgroundColor: '#1E2516',
           color: '#EDE8DC',
-          padding: '6rem 2rem 5rem',
+          padding: 'clamp(3.5rem, 8vw, 6rem) clamp(1rem, 4vw, 2rem) clamp(2.5rem, 6vw, 5rem)',
           textAlign: 'center',
           position: 'relative',
         }}
@@ -99,7 +99,7 @@ export const FarmersPage: React.FC = () => {
           <h1
             style={{
               fontFamily: 'var(--font-serif)',
-              fontSize: 'clamp(2.8rem, 5vw, 4.5rem)',
+              fontSize: 'clamp(2.4rem, 6vw, 4.5rem)',
               fontWeight: 400,
               lineHeight: 1.15,
               color: '#FFFFFF',
@@ -111,7 +111,7 @@ export const FarmersPage: React.FC = () => {
 
           <p
             style={{
-              fontSize: '1.2rem',
+              fontSize: 'clamp(1rem, 2.5vw, 1.2rem)',
               lineHeight: 1.7,
               color: '#B5AFA4',
               maxWidth: '780px',
@@ -124,20 +124,20 @@ export const FarmersPage: React.FC = () => {
         </div>
       </div>
 
-      <div style={{ maxWidth: '1440px', margin: '4rem auto 0', padding: '0 2rem' }}>
+      <div style={{ maxWidth: '1440px', margin: 'clamp(2rem, 5vw, 4rem) auto 0', padding: '0 clamp(1rem, 3vw, 2rem)' }}>
         {/* Core Pillars Ribbon */}
         <div
           style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))',
-            gap: '1.5rem',
-            marginBottom: '5rem',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 260px), 1fr))',
+            gap: 'clamp(1rem, 2.5vw, 1.5rem)',
+            marginBottom: 'clamp(2.5rem, 5vw, 5rem)',
           }}
         >
           <div
             style={{
               backgroundColor: '#FFFFFF',
-              padding: '2rem',
+              padding: 'clamp(1.2rem, 3vw, 2rem)',
               borderRadius: '20px',
               boxShadow: '0 10px 25px rgba(0,0,0,0.04)',
               border: '1px solid rgba(99, 141, 8, 0.2)',
@@ -153,7 +153,7 @@ export const FarmersPage: React.FC = () => {
           <div
             style={{
               backgroundColor: '#FFFFFF',
-              padding: '2rem',
+              padding: 'clamp(1.2rem, 3vw, 2rem)',
               borderRadius: '20px',
               boxShadow: '0 10px 25px rgba(0,0,0,0.04)',
               border: '1px solid rgba(99, 141, 8, 0.2)',
@@ -169,7 +169,7 @@ export const FarmersPage: React.FC = () => {
           <div
             style={{
               backgroundColor: '#FFFFFF',
-              padding: '2rem',
+              padding: 'clamp(1.2rem, 3vw, 2rem)',
               borderRadius: '20px',
               boxShadow: '0 10px 25px rgba(0,0,0,0.04)',
               border: '1px solid rgba(99, 141, 8, 0.2)',
@@ -184,7 +184,7 @@ export const FarmersPage: React.FC = () => {
         </div>
 
         {/* Cooperatives In-Depth List */}
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '4rem' }}>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 'clamp(2rem, 4vw, 4rem)' }}>
           {cooperatives.map((c, i) => (
             <div
               key={i}
@@ -195,11 +195,11 @@ export const FarmersPage: React.FC = () => {
                 boxShadow: '0 15px 40px rgba(0, 0, 0, 0.05)',
                 border: '1px solid rgba(99, 141, 8, 0.2)',
                 display: 'grid',
-                gridTemplateColumns: 'repeat(auto-fit, minmax(360px, 1fr))',
+                gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 320px), 1fr))',
                 alignItems: 'stretch',
               }}
             >
-              <div style={{ position: 'relative', minHeight: '340px' }}>
+              <div style={{ position: 'relative', minHeight: 'clamp(240px, 35vw, 340px)' }}>
                 <img
                   src={c.image}
                   alt={c.name}
@@ -222,7 +222,7 @@ export const FarmersPage: React.FC = () => {
                 </div>
               </div>
 
-              <div style={{ padding: 'clamp(2rem, 4vw, 3.5rem)', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+              <div style={{ padding: 'clamp(1.5rem, 4vw, 3.5rem)', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', color: '#4E6E10', fontSize: '0.82rem', fontWeight: 700, marginBottom: '0.4rem' }}>
                   <MapPin size={15} /> {c.region}
                 </div>
@@ -230,7 +230,7 @@ export const FarmersPage: React.FC = () => {
                 <h3
                   style={{
                     fontFamily: 'var(--font-serif)',
-                    fontSize: '2rem',
+                    fontSize: 'clamp(1.6rem, 3.5vw, 2rem)',
                     color: '#18240A',
                     marginBottom: '0.6rem',
                     lineHeight: 1.2,
@@ -278,10 +278,10 @@ export const FarmersPage: React.FC = () => {
         {/* Traceability Callout */}
         <div
           style={{
-            marginTop: '6rem',
+            marginTop: 'clamp(3rem, 6vw, 6rem)',
             backgroundColor: '#F0F4E8',
             borderRadius: '24px',
-            padding: '3rem',
+            padding: 'clamp(2rem, 5vw, 3rem) clamp(1rem, 4vw, 2rem)',
             textAlign: 'center',
             border: '1.5px solid rgba(78, 110, 16, 0.25)',
           }}
@@ -290,14 +290,14 @@ export const FarmersPage: React.FC = () => {
           <h2
             style={{
               fontFamily: 'var(--font-serif)',
-              fontSize: '2.4rem',
+              fontSize: 'clamp(1.8rem, 4vw, 2.4rem)',
               color: '#18240A',
               marginBottom: '0.8rem',
             }}
           >
             Want to see the exact farm behind your bottle?
           </h2>
-          <p style={{ color: '#556345', maxWidth: '650px', margin: '0 auto 2rem', fontSize: '1.05rem' }}>
+          <p style={{ color: '#556345', maxWidth: '650px', margin: '0 auto 2rem', fontSize: '1rem', lineHeight: 1.6 }}>
             Enter any batch code from your NAMO container to view geo-coordinates, harvest timestamps, and farmer certifications.
           </p>
           <Link to="/traceability" className="btn-primary" style={{ padding: '0.9rem 2rem' }}>

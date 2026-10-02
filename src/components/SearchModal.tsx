@@ -64,7 +64,7 @@ export const SearchModal: React.FC<SearchModalProps> = ({ isOpen, onClose }) => 
         display: 'flex',
         alignItems: 'flex-start',
         justifyContent: 'center',
-        padding: '5rem 1rem 2rem',
+        padding: 'clamp(1rem, 6vh, 5rem) clamp(0.75rem, 3vw, 1rem) 2rem',
         animation: 'fadeIn 0.2s ease',
       }}
       onClick={onClose}
@@ -86,12 +86,12 @@ export const SearchModal: React.FC<SearchModalProps> = ({ isOpen, onClose }) => 
           style={{
             display: 'flex',
             alignItems: 'center',
-            padding: '1.2rem 1.6rem',
+            padding: 'clamp(0.9rem, 2.5vw, 1.2rem) clamp(1rem, 3vw, 1.6rem)',
             borderBottom: '1px solid rgba(24, 36, 10, 0.08)',
-            gap: '1rem',
+            gap: '0.8rem',
           }}
         >
-          <Search size={22} color="#4E6E10" />
+          <Search size={22} color="#4E6E10" style={{ flexShrink: 0 }} />
           <input
             ref={inputRef}
             type="text"
@@ -102,7 +102,7 @@ export const SearchModal: React.FC<SearchModalProps> = ({ isOpen, onClose }) => 
               flex: 1,
               border: 'none',
               outline: 'none',
-              fontSize: '1.1rem',
+              fontSize: 'clamp(0.95rem, 2.5vw, 1.1rem)',
               fontFamily: 'var(--font-display)',
               color: '#18240A',
               background: 'transparent',

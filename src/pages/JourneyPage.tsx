@@ -107,7 +107,7 @@ export const JourneyPage: React.FC = () => {
         style={{
           backgroundColor: '#1E2516',
           color: '#EDE8DC',
-          padding: '6rem 2rem 5rem',
+          padding: 'clamp(3.5rem, 8vw, 6rem) clamp(1rem, 4vw, 2rem) clamp(2.5rem, 6vw, 5rem)',
           textAlign: 'center',
           position: 'relative',
         }}
@@ -133,7 +133,7 @@ export const JourneyPage: React.FC = () => {
           <h1
             style={{
               fontFamily: 'var(--font-serif)',
-              fontSize: 'clamp(2.8rem, 5vw, 4.5rem)',
+              fontSize: 'clamp(2.4rem, 6vw, 4.5rem)',
               fontWeight: 400,
               lineHeight: 1.15,
               color: '#FFFFFF',
@@ -145,7 +145,7 @@ export const JourneyPage: React.FC = () => {
 
           <p
             style={{
-              fontSize: '1.2rem',
+              fontSize: 'clamp(1rem, 2.5vw, 1.2rem)',
               lineHeight: 1.7,
               color: '#B5AFA4',
               maxWidth: '750px',
@@ -157,14 +157,14 @@ export const JourneyPage: React.FC = () => {
         </div>
       </div>
 
-      <div style={{ maxWidth: '1440px', margin: '4rem auto 0', padding: '0 2rem' }}>
+      <div style={{ maxWidth: '1440px', margin: 'clamp(2rem, 5vw, 4rem) auto 0', padding: '0 clamp(1rem, 3vw, 2rem)' }}>
         {/* Step Selector Horizontal Bar */}
         <div
           style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))',
-            gap: '1rem',
-            marginBottom: '3.5rem',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 150px), 1fr))',
+            gap: '0.75rem',
+            marginBottom: 'clamp(2rem, 4vw, 3.5rem)',
           }}
         >
           {stages.map((stage, idx) => (
@@ -176,7 +176,7 @@ export const JourneyPage: React.FC = () => {
                 color: activeStage === idx ? '#FFFFFF' : '#18240A',
                 border: activeStage === idx ? '2px solid #243810' : '1px solid rgba(24, 36, 10, 0.1)',
                 borderRadius: '16px',
-                padding: '1.2rem 1rem',
+                padding: '1rem 0.85rem',
                 textAlign: 'left',
                 cursor: 'pointer',
                 transition: 'all 0.25s ease',
@@ -213,12 +213,12 @@ export const JourneyPage: React.FC = () => {
             boxShadow: '0 20px 55px rgba(0, 0, 0, 0.07)',
             border: '1px solid rgba(99, 141, 8, 0.2)',
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(380px, 1fr))',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 340px), 1fr))',
             alignItems: 'stretch',
           }}
         >
           {/* Image & Stage Banner */}
-          <div style={{ position: 'relative', minHeight: '440px' }}>
+          <div style={{ position: 'relative', minHeight: 'clamp(260px, 40vw, 440px)' }}>
             <img
               src={current.bgImage}
               alt={current.name}
@@ -227,8 +227,8 @@ export const JourneyPage: React.FC = () => {
             <div
               style={{
                 position: 'absolute',
-                top: '2rem',
-                left: '2rem',
+                top: 'clamp(1rem, 3vw, 2rem)',
+                left: 'clamp(1rem, 3vw, 2rem)',
                 backgroundColor: '#FFDB15',
                 color: '#18240A',
                 fontWeight: 900,
@@ -243,7 +243,7 @@ export const JourneyPage: React.FC = () => {
           </div>
 
           {/* Detailed Content */}
-          <div style={{ padding: 'clamp(2.5rem, 5vw, 4.5rem)', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+          <div style={{ padding: 'clamp(1.5rem, 4vw, 4.5rem)', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
             <span style={{ fontSize: '0.75rem', letterSpacing: '0.15em', color: '#4E6E10', fontWeight: 800, textTransform: 'uppercase' }}>
               {current.subtitle}
             </span>
@@ -251,7 +251,7 @@ export const JourneyPage: React.FC = () => {
             <h2
               style={{
                 fontFamily: 'var(--font-serif)',
-                fontSize: 'clamp(2rem, 3.5vw, 3rem)',
+                fontSize: 'clamp(1.8rem, 3.5vw, 3rem)',
                 color: '#18240A',
                 margin: '0.6rem 0 1rem',
                 lineHeight: 1.2,
@@ -260,16 +260,16 @@ export const JourneyPage: React.FC = () => {
               {current.headline}
             </h2>
 
-            <p style={{ fontSize: '1.05rem', lineHeight: 1.7, color: '#3D4A2D', marginBottom: '1.2rem' }}>
+            <p style={{ fontSize: 'clamp(0.95rem, 2vw, 1.05rem)', lineHeight: 1.7, color: '#3D4A2D', marginBottom: '1.2rem' }}>
               {current.description}
             </p>
 
-            <p style={{ fontSize: '0.92rem', lineHeight: 1.7, color: '#556345', marginBottom: '1.8rem' }}>
+            <p style={{ fontSize: '0.9rem', lineHeight: 1.7, color: '#556345', marginBottom: '1.8rem' }}>
               {current.details}
             </p>
 
             {/* Specs Pills */}
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '0.75rem', marginBottom: '2rem' }}>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 180px), 1fr))', gap: '0.75rem', marginBottom: '2rem' }}>
               {current.specs.map((s, idx) => (
                 <div key={idx} style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
                   <div
@@ -310,7 +310,7 @@ export const JourneyPage: React.FC = () => {
         </div>
 
         {/* Bottom CTA */}
-        <div style={{ textAlign: 'center', marginTop: '6rem' }}>
+        <div style={{ textAlign: 'center', marginTop: 'clamp(3rem, 6vw, 6rem)' }}>
           <Link to="/products" className="btn-primary" style={{ padding: '1rem 2.2rem', fontSize: '0.9rem' }}>
             TASTE THE PURITY OF OUR PROCESS <ArrowRight size={16} />
           </Link>

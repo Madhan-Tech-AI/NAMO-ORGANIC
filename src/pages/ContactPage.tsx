@@ -128,14 +128,14 @@ export const ContactPage: React.FC = () => {
         </div>
       </div>
 
-      <div style={{ maxWidth: '1440px', margin: '4rem auto 0', padding: '0 2rem' }}>
+      <div style={{ maxWidth: '1440px', margin: '2rem auto 0', padding: '0 clamp(1rem, 3vw, 2rem)' }}>
         {/* Main Grid: Contact Info + Form */}
         <div
           style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(360px, 1fr))',
-            gap: '3.5rem',
-            marginBottom: '6rem',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 340px), 1fr))',
+            gap: '2.5rem',
+            marginBottom: '4rem',
           }}
         >
           {/* Left Column: Direct Details */}

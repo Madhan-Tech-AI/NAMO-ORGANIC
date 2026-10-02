@@ -105,7 +105,7 @@ export const WhyNamoPage: React.FC = () => {
         style={{
           backgroundColor: '#1E2516',
           color: '#EDE8DC',
-          padding: '6rem 2rem 5rem',
+          padding: 'clamp(3.5rem, 8vw, 6rem) clamp(1rem, 4vw, 2rem) clamp(2.5rem, 6vw, 5rem)',
           textAlign: 'center',
           position: 'relative',
         }}
@@ -131,7 +131,7 @@ export const WhyNamoPage: React.FC = () => {
           <h1
             style={{
               fontFamily: 'var(--font-serif)',
-              fontSize: 'clamp(2.8rem, 5vw, 4.5rem)',
+              fontSize: 'clamp(2.4rem, 6vw, 4.5rem)',
               fontWeight: 400,
               lineHeight: 1.15,
               color: '#FFFFFF',
@@ -143,7 +143,7 @@ export const WhyNamoPage: React.FC = () => {
 
           <p
             style={{
-              fontSize: '1.2rem',
+              fontSize: 'clamp(1rem, 2.5vw, 1.2rem)',
               lineHeight: 1.7,
               color: '#B5AFA4',
               maxWidth: '750px',
@@ -156,10 +156,10 @@ export const WhyNamoPage: React.FC = () => {
         </div>
       </div>
 
-      <div style={{ maxWidth: '1440px', margin: '4rem auto 0', padding: '0 2rem' }}>
+      <div style={{ maxWidth: '1440px', margin: 'clamp(2rem, 5vw, 4rem) auto 0', padding: '0 clamp(1rem, 3vw, 2rem)' }}>
         {/* 6 Core Pillars Grid */}
-        <div style={{ marginBottom: '6rem' }}>
-          <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
+        <div style={{ marginBottom: 'clamp(3rem, 6vw, 6rem)' }}>
+          <div style={{ textAlign: 'center', marginBottom: 'clamp(2rem, 4vw, 3rem)' }}>
             <span className="badge-organic">THE SIX PILLARS OF INTEGRITY</span>
             <h2
               style={{
@@ -176,8 +176,8 @@ export const WhyNamoPage: React.FC = () => {
           <div
             style={{
               display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(340px, 1fr))',
-              gap: '2rem',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 300px), 1fr))',
+              gap: 'clamp(1.2rem, 3vw, 2rem)',
             }}
           >
             {pillars.map((p, idx) => (
@@ -186,7 +186,7 @@ export const WhyNamoPage: React.FC = () => {
                 style={{
                   backgroundColor: '#FFFFFF',
                   borderRadius: '24px',
-                  padding: '2.5rem',
+                  padding: 'clamp(1.5rem, 4vw, 2.5rem)',
                   border: '1px solid rgba(99, 141, 8, 0.2)',
                   boxShadow: '0 12px 35px -5px rgba(24, 36, 10, 0.05)',
                   display: 'flex',
@@ -263,18 +263,18 @@ export const WhyNamoPage: React.FC = () => {
           style={{
             backgroundColor: '#FFFFFF',
             borderRadius: '24px',
-            padding: 'clamp(2rem, 5vw, 4rem)',
+            padding: 'clamp(1.5rem, 4vw, 4rem)',
             boxShadow: '0 15px 45px rgba(24, 36, 10, 0.06)',
             border: '1px solid rgba(99, 141, 8, 0.2)',
-            marginBottom: '6rem',
+            marginBottom: 'clamp(3rem, 6vw, 6rem)',
           }}
         >
-          <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
+          <div style={{ textAlign: 'center', marginBottom: ' clamp(1.8rem, 4vw, 3rem)' }}>
             <span className="badge-organic">HONEST COMPARISON</span>
             <h2
               style={{
                 fontFamily: 'var(--font-serif)',
-                fontSize: 'clamp(2.2rem, 3.5vw, 3.2rem)',
+                fontSize: 'clamp(2rem, 3.5vw, 3.2rem)',
                 color: '#18240A',
                 marginTop: '0.8rem',
               }}
@@ -286,8 +286,8 @@ export const WhyNamoPage: React.FC = () => {
             </p>
           </div>
 
-          <div style={{ overflowX: 'auto' }}>
-            <table style={{ width: '100%', borderCollapse: 'collapse', minWidth: '700px' }}>
+          <div style={{ overflowX: 'auto', WebkitOverflowScrolling: 'touch' }} className="touch-scroll-x">
+            <table style={{ width: '100%', borderCollapse: 'collapse', minWidth: '640px' }}>
               <thead>
                 <tr style={{ borderBottom: '2px solid rgba(24, 36, 10, 0.12)' }}>
                   <th style={{ textAlign: 'left', padding: '1rem', color: '#6B7959', fontSize: '0.85rem' }}>
@@ -341,31 +341,31 @@ export const WhyNamoPage: React.FC = () => {
           style={{
             backgroundColor: '#1E2516',
             borderRadius: '24px',
-            padding: '3.5rem 2.5rem',
+            padding: 'clamp(2rem, 5vw, 3.5rem) clamp(1.2rem, 4vw, 2.5rem)',
             color: '#FFFFFF',
             textAlign: 'center',
           }}
         >
           <Award size={36} color="#FFDB15" style={{ margin: '0 auto 1rem' }} />
-          <h2 style={{ fontFamily: 'var(--font-serif)', fontSize: '2.4rem', marginBottom: '0.8rem' }}>
+          <h2 style={{ fontFamily: 'var(--font-serif)', fontSize: 'clamp(1.8rem, 4vw, 2.4rem)', marginBottom: '0.8rem' }}>
             Accredited by National & International Purity Bodies
           </h2>
-          <p style={{ color: '#B5AFA4', maxWidth: '650px', margin: '0 auto 2.5rem', fontSize: '1.02rem' }}>
+          <p style={{ color: '#B5AFA4', maxWidth: '650px', margin: '0 auto 2rem', fontSize: '1rem', lineHeight: 1.6 }}>
             Certified under the National Programme for Organic Production (NPOP), Jaivik Bharat, and audited according to FSSAI Organic Food Regulations.
           </p>
 
-          <div style={{ display: 'flex', justifyContent: 'center', flexWrap: 'wrap', gap: '1.5rem' }}>
+          <div style={{ display: 'flex', justifyContent: 'center', flexWrap: 'wrap', gap: '0.8rem' }}>
             {['INDIA ORGANIC (NPOP)', 'JAIVIK BHARAT', 'FSSAI CERTIFIED', 'PESTICIDE SCREEN: 0/180 RESIDUES', '100% RECYCLABLE GLASS'].map((c, i) => (
               <span
                 key={i}
                 style={{
                   backgroundColor: 'rgba(255, 255, 255, 0.08)',
                   border: '1px solid rgba(255, 219, 21, 0.4)',
-                  padding: '0.65rem 1.4rem',
+                  padding: '0.5rem 1rem',
                   borderRadius: '9999px',
-                  fontSize: '0.78rem',
+                  fontSize: '0.75rem',
                   fontWeight: 800,
-                  letterSpacing: '0.1em',
+                  letterSpacing: '0.08em',
                   color: '#FFDB15',
                 }}
               >
@@ -374,7 +374,7 @@ export const WhyNamoPage: React.FC = () => {
             ))}
           </div>
 
-          <div style={{ marginTop: '3rem' }}>
+          <div style={{ marginTop: '2.5rem' }}>
             <Link to="/products" className="btn-primary" style={{ padding: '0.9rem 2.2rem' }}>
               BROWSE VERIFIED HARVESTS <ArrowRight size={16} />
             </Link>

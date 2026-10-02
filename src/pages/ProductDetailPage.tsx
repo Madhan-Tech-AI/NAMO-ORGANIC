@@ -66,7 +66,7 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({
         style={{
           borderBottom: '1px solid rgba(24, 36, 10, 0.06)',
           backgroundColor: '#FFFFFF',
-          padding: '0.9rem 2rem',
+          padding: '0.9rem clamp(1rem, 3vw, 2rem)',
         }}
       >
         <div
@@ -78,6 +78,7 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({
             gap: '0.6rem',
             fontSize: '0.82rem',
             color: '#6B7959',
+            flexWrap: 'wrap',
           }}
         >
           <Link to="/" style={{ color: '#6B7959', textDecoration: 'none' }}>
@@ -92,7 +93,7 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({
         </div>
       </div>
 
-      <div style={{ maxWidth: '1440px', margin: '3rem auto 0', padding: '0 2rem' }}>
+      <div style={{ maxWidth: '1440px', margin: '2rem auto 0', padding: '0 clamp(1rem, 3vw, 2rem)' }}>
         {/* Back Link */}
         <button
           onClick={() => navigate(-1)}
@@ -106,7 +107,7 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({
             fontWeight: 700,
             fontSize: '0.84rem',
             cursor: 'pointer',
-            marginBottom: '2rem',
+            marginBottom: '1.5rem',
           }}
         >
           <ArrowLeft size={16} /> BACK TO HARVESTS
@@ -116,12 +117,12 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({
         <div
           style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(380px, 1fr))',
-            gap: '3.5rem',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 340px), 1fr))',
+            gap: '2.5rem',
             alignItems: 'start',
             backgroundColor: '#FFFFFF',
             borderRadius: '24px',
-            padding: 'clamp(1.5rem, 4vw, 3.5rem)',
+            padding: 'clamp(1.2rem, 3.5vw, 3.5rem)',
             boxShadow: '0 15px 45px -10px rgba(24, 36, 10, 0.08)',
             border: '1px solid rgba(99, 141, 8, 0.2)',
           }}

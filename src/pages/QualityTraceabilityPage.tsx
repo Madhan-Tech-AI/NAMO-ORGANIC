@@ -38,7 +38,7 @@ export const QualityTraceabilityPage: React.FC<QualityTraceabilityPageProps> = (
         style={{
           backgroundColor: '#1E2516',
           color: '#EDE8DC',
-          padding: '6rem 2rem 5rem',
+          padding: 'clamp(3.5rem, 8vw, 6rem) clamp(1rem, 4vw, 2rem) clamp(2.5rem, 6vw, 5rem)',
           textAlign: 'center',
           position: 'relative',
         }}
@@ -64,7 +64,7 @@ export const QualityTraceabilityPage: React.FC<QualityTraceabilityPageProps> = (
           <h1
             style={{
               fontFamily: 'var(--font-serif)',
-              fontSize: 'clamp(2.8rem, 5vw, 4.5rem)',
+              fontSize: 'clamp(2.4rem, 6vw, 4.5rem)',
               fontWeight: 400,
               lineHeight: 1.15,
               color: '#FFFFFF',
@@ -76,7 +76,7 @@ export const QualityTraceabilityPage: React.FC<QualityTraceabilityPageProps> = (
 
           <p
             style={{
-              fontSize: '1.2rem',
+              fontSize: 'clamp(1rem, 2.5vw, 1.2rem)',
               lineHeight: 1.7,
               color: '#B5AFA4',
               maxWidth: '750px',
@@ -89,25 +89,25 @@ export const QualityTraceabilityPage: React.FC<QualityTraceabilityPageProps> = (
         </div>
       </div>
 
-      <div style={{ maxWidth: '1440px', margin: '4rem auto 0', padding: '0 2rem' }}>
+      <div style={{ maxWidth: '1440px', margin: 'clamp(2rem, 5vw, 4rem) auto 0', padding: '0 clamp(1rem, 3vw, 2rem)' }}>
         {/* Interactive Batch Lookup Card */}
         <div
           style={{
             backgroundColor: '#FFFFFF',
             borderRadius: '24px',
-            padding: '2.5rem',
+            padding: 'clamp(1.5rem, 4vw, 2.5rem)',
             boxShadow: '0 15px 40px rgba(24, 36, 10, 0.08)',
             border: '1px solid rgba(99, 141, 8, 0.25)',
-            marginBottom: '4rem',
+            marginBottom: 'clamp(2.5rem, 5vw, 4rem)',
             maxWidth: '850px',
-            margin: '0 auto 4rem',
+            margin: '0 auto clamp(2.5rem, 5vw, 4rem)',
           }}
         >
-          <div style={{ textAlign: 'center', marginBottom: '2rem' }}>
+          <div style={{ textAlign: 'center', marginBottom: 'clamp(1.2rem, 3vw, 2rem)' }}>
             <span style={{ fontSize: '0.75rem', fontWeight: 800, color: '#4E6E10', letterSpacing: '0.12em', textTransform: 'uppercase' }}>
               Interactive Verification Terminal
             </span>
-            <h2 style={{ fontFamily: 'var(--font-serif)', fontSize: '2rem', color: '#18240A', marginTop: '4px' }}>
+            <h2 style={{ fontFamily: 'var(--font-serif)', fontSize: 'clamp(1.5rem, 3.5vw, 2rem)', color: '#18240A', marginTop: '4px' }}>
               Enter Container Batch Code
             </h2>
           </div>
@@ -116,7 +116,7 @@ export const QualityTraceabilityPage: React.FC<QualityTraceabilityPageProps> = (
             <div
               style={{
                 flex: 1,
-                minWidth: '260px',
+                minWidth: 'min(100%, 260px)',
                 display: 'flex',
                 alignItems: 'center',
                 backgroundColor: '#F8F9F3',
@@ -151,7 +151,7 @@ export const QualityTraceabilityPage: React.FC<QualityTraceabilityPageProps> = (
             <button
               onClick={() => handleLookup(inputBatch)}
               className="btn-primary"
-              style={{ padding: '0 2rem', fontSize: '0.9rem' }}
+              style={{ padding: '0.85rem 1.8rem', fontSize: '0.9rem', flexShrink: 0 }}
             >
               VERIFY BATCH
             </button>
@@ -196,11 +196,11 @@ export const QualityTraceabilityPage: React.FC<QualityTraceabilityPageProps> = (
             style={{
               backgroundColor: '#FFFFFF',
               borderRadius: '24px',
-              padding: 'clamp(2rem, 4vw, 3.5rem)',
+              padding: 'clamp(1.5rem, 4vw, 3.5rem)',
               boxShadow: '0 20px 50px rgba(24, 36, 10, 0.08)',
               border: '2px solid #7EBE22',
               position: 'relative',
-              marginBottom: '5rem',
+              marginBottom: 'clamp(3rem, 6vw, 5rem)',
             }}
           >
             {/* Verified Stamp Header */}
@@ -253,8 +253,8 @@ export const QualityTraceabilityPage: React.FC<QualityTraceabilityPageProps> = (
             <div
               style={{
                 display: 'grid',
-                gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
-                gap: '2rem',
+                gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 260px), 1fr))',
+                gap: '1.5rem',
                 marginBottom: '2.5rem',
               }}
             >
@@ -330,21 +330,21 @@ export const QualityTraceabilityPage: React.FC<QualityTraceabilityPageProps> = (
               style={{
                 backgroundColor: '#F0F4E8',
                 borderRadius: '18px',
-                padding: '2rem',
+                padding: 'clamp(1.2rem, 3vw, 2rem)',
                 border: '1px solid rgba(78, 110, 16, 0.2)',
               }}
             >
               <h4
                 style={{
                   fontFamily: 'var(--font-serif)',
-                  fontSize: '1.5rem',
+                  fontSize: 'clamp(1.2rem, 3vw, 1.5rem)',
                   color: '#18240A',
                   marginBottom: '1rem',
                 }}
               >
                 Accredited NABL Lab Analysis Results:
               </h4>
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '0.8rem' }}>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 240px), 1fr))', gap: '0.8rem' }}>
                 {selectedProduct.purityTests.map((t, idx) => (
                   <div
                     key={idx}
@@ -372,7 +372,7 @@ export const QualityTraceabilityPage: React.FC<QualityTraceabilityPageProps> = (
             style={{
               backgroundColor: '#FFFFFF',
               borderRadius: '24px',
-              padding: '3rem',
+              padding: 'clamp(1.5rem, 4vw, 3rem)',
               textAlign: 'center',
               border: '1px solid rgba(186, 60, 60, 0.3)',
               marginBottom: '5rem',
@@ -398,25 +398,25 @@ export const QualityTraceabilityPage: React.FC<QualityTraceabilityPageProps> = (
         )}
 
         {/* Quality Standards Section */}
-        <div style={{ textAlign: 'center', marginTop: '5rem' }}>
-          <h2 style={{ fontFamily: 'var(--font-serif)', fontSize: '2.4rem', color: '#18240A', marginBottom: '1rem' }}>
+        <div style={{ textAlign: 'center', marginTop: 'clamp(3rem, 6vw, 5rem)' }}>
+          <h2 style={{ fontFamily: 'var(--font-serif)', fontSize: 'clamp(1.8rem, 4vw, 2.4rem)', color: '#18240A', marginBottom: '1rem' }}>
             The NAMO Quality Guarantee
           </h2>
-          <p style={{ color: '#556345', maxWidth: '700px', margin: '0 auto 3rem', lineHeight: 1.7 }}>
+          <p style={{ color: '#556345', maxWidth: '700px', margin: '0 auto 2.5rem', lineHeight: 1.7, fontSize: 'clamp(0.95rem, 2vw, 1.05rem)' }}>
             If any NAMO harvest fails to meet our stringent standards of zero chemicals, zero hexane, and complete traceability, we replace it or refund in full immediately with no questions asked.
           </p>
 
-          <div style={{ display: 'flex', justifyContent: 'center', flexWrap: 'wrap', gap: '2rem' }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', color: '#18240A', fontWeight: 700 }}>
+          <div style={{ display: 'flex', justifyContent: 'center', flexWrap: 'wrap', gap: 'clamp(1rem, 3vw, 2rem)' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', color: '#18240A', fontWeight: 700, fontSize: '0.9rem' }}>
               <ShieldCheck size={20} color="#4E6E10" /> 100% Certified Organic
             </div>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', color: '#18240A', fontWeight: 700 }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', color: '#18240A', fontWeight: 700, fontSize: '0.9rem' }}>
               <ShieldCheck size={20} color="#4E6E10" /> Vaagai Wood Cold Extraction
             </div>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', color: '#18240A', fontWeight: 700 }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', color: '#18240A', fontWeight: 700, fontSize: '0.9rem' }}>
               <ShieldCheck size={20} color="#4E6E10" /> Vedic Bilona Churning
             </div>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', color: '#18240A', fontWeight: 700 }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', color: '#18240A', fontWeight: 700, fontSize: '0.9rem' }}>
               <ShieldCheck size={20} color="#4E6E10" /> Nitrogen Sealed Freshness
             </div>
           </div>

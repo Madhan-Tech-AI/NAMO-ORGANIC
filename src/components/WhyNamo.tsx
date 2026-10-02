@@ -86,20 +86,20 @@ export const WhyNamo: React.FC = () => {
       style={{
         position: 'relative',
         backgroundColor: '#F8F9F3',
-        padding: '7rem 2rem',
+        padding: 'clamp(3.5rem, 8vw, 7rem) clamp(1rem, 4vw, 2rem)',
         overflow: 'hidden',
       }}
     >
       <div style={{ maxWidth: '1440px', margin: '0 auto' }}>
         {/* Section Heading */}
-        <div style={{ textAlign: 'center', marginBottom: '4.5rem' }}>
+        <div style={{ textAlign: 'center', marginBottom: 'clamp(2rem, 4vw, 4.5rem)' }}>
           <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', marginBottom: '1rem' }}>
             <span className="badge-organic">THE NAMO BENCHMARK</span>
           </div>
           <h2
             style={{
               fontFamily: 'var(--font-serif)',
-              fontSize: 'clamp(2.5rem, 4.5vw, 4.2rem)',
+              fontSize: 'clamp(2.2rem, 4.5vw, 4.2rem)',
               fontWeight: 400,
               lineHeight: 1.15,
               color: '#18240A',
@@ -110,11 +110,12 @@ export const WhyNamo: React.FC = () => {
           </h2>
           <p
             style={{
-              fontSize: '1.15rem',
+              fontSize: 'clamp(1rem, 2vw, 1.15rem)',
               color: '#556345',
               maxWidth: '620px',
               margin: '0 auto',
               fontWeight: 400,
+              lineHeight: 1.6,
             }}
           >
             We don’t believe in industrial shortcuts. Every jar, pouch, and bottle represents an unyielding vow to soil purity and human vitality.
@@ -126,8 +127,8 @@ export const WhyNamo: React.FC = () => {
           ref={cardsRef}
           style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))',
-            gap: '2rem',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 300px), 1fr))',
+            gap: 'clamp(1.2rem, 3vw, 2rem)',
           }}
         >
           {reasons.map((item, idx) => (
@@ -137,7 +138,7 @@ export const WhyNamo: React.FC = () => {
                 position: 'relative',
                 background: '#FFFFFF',
                 borderRadius: '24px',
-                padding: '2.8rem 2.4rem',
+                padding: 'clamp(1.5rem, 4vw, 2.8rem) clamp(1.2rem, 3vw, 2.4rem)',
                 border: '1px solid rgba(99, 141, 8, 0.2)',
                 boxShadow: '0 15px 35px -10px rgba(24, 36, 10, 0.05)',
                 transition: 'all 0.4s cubic-bezier(0.16, 1, 0.3, 1)',

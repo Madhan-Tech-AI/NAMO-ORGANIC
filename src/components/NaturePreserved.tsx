@@ -134,6 +134,8 @@ export const NaturePreserved: React.FC = () => {
                 display: 'flex',
                 justifyContent: 'space-between',
                 alignItems: 'flex-end',
+                flexWrap: 'wrap',
+                gap: '0.8rem',
               }}
             >
               <div>

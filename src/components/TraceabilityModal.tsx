@@ -122,7 +122,7 @@ export const TraceabilityModal: React.FC<TraceabilityModalProps> = ({
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        padding: '1.5rem',
+        padding: 'clamp(0.5rem, 2vw, 1.5rem)',
       }}
       onClick={onClose}
     >
@@ -130,12 +130,12 @@ export const TraceabilityModal: React.FC<TraceabilityModalProps> = ({
         style={{
           backgroundColor: '#FFFFFF',
           border: '1px solid rgba(99, 141, 8, 0.3)',
-          borderRadius: '28px',
+          borderRadius: '24px',
           width: '100%',
           maxWidth: '820px',
-          maxHeight: '90vh',
+          maxHeight: '92vh',
           overflowY: 'auto',
-          padding: '2.5rem',
+          padding: 'clamp(1.2rem, 3.5vw, 2.5rem)',
           boxShadow: '0 30px 80px rgba(24, 36, 10, 0.2)',
           position: 'relative',
         }}
@@ -146,8 +146,8 @@ export const TraceabilityModal: React.FC<TraceabilityModalProps> = ({
           onClick={onClose}
           style={{
             position: 'absolute',
-            top: '1.8rem',
-            right: '1.8rem',
+            top: 'clamp(0.9rem, 2vw, 1.8rem)',
+            right: 'clamp(0.9rem, 2vw, 1.8rem)',
             background: '#F0F4E8',
             border: 'none',
             color: '#18240A',
@@ -212,7 +212,7 @@ export const TraceabilityModal: React.FC<TraceabilityModalProps> = ({
             background: '#F8F9F3',
             border: '1px solid rgba(99, 141, 8, 0.25)',
             borderRadius: '20px',
-            padding: '2rem',
+            padding: 'clamp(1rem, 2.5vw, 2rem)',
             marginBottom: '2rem',
           }}
         >

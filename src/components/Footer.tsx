@@ -263,7 +263,7 @@ export const Footer: React.FC = () => {
           }}
         >
           <p>© {new Date().getFullYear()} NAMO — Natural Agriculture Modern Organic. All rights reserved.</p>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '2rem' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '1.2rem', flexWrap: 'wrap' }}>
             <Link to="/why-namo" style={{ color: '#768565', textDecoration: 'none' }}>
               Terms of Purity
             </Link>

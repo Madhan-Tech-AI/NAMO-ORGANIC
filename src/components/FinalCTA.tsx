@@ -35,14 +35,14 @@ export const FinalCTA: React.FC = () => {
       ref={containerRef}
       style={{
         position: 'relative',
-        height: '90vh',
-        minHeight: '620px',
+        height: 'auto',
+        minHeight: 'clamp(460px, 75vh, 680px)',
         overflow: 'hidden',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
         textAlign: 'center',
-        padding: '2rem',
+        padding: 'clamp(3.5rem, 8vh, 6rem) clamp(1rem, 4vw, 2rem)',
       }}
     >
       {/* Background Cinematic Sunset Landscape */}
