@@ -113,6 +113,8 @@ export const Footer: React.FC = () => {
                 { label: 'Cold-Pressed Edible Oils (Vaagai Marachekku)', to: '/product/sesame-oil' },
                 { label: 'A2 Desi Cow Bilona Ghee', to: '/product/a2-ghee' },
                 { label: 'Raw Forest Honey (Unpasteurized)', to: '/product/organic-honey' },
+                { label: 'Panchakavya Bio-Fertilizers & Pesticides', to: '/products?category=fertilizers' },
+                { label: 'Algae-Based Cattle Feed Supplement', to: '/product/algae-cattle-feed-supplement' },
                 { label: 'Stone-Ground Whole Wheat & Grains', to: '/product/wheat-flour' },
                 { label: 'Unpolished Organic Dals & Pulses', to: '/products?category=dals' },
                 { label: 'Hand-Sorted Raw Nuts & Dry Fruits', to: '/products?category=nuts' },

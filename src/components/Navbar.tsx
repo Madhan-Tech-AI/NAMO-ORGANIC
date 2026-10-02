@@ -47,7 +47,8 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenCart, cartCount }) => {
     { label: 'COLD PRESSED OILS', to: '/product/sesame-oil' },
     { label: 'A2 COW GHEE', to: '/product/a2-ghee' },
     { label: 'NAMO ORGANIC HONEY', to: '/product/organic-honey' },
-    { label: 'NAMO ORGANIC JAGGERY POWDER', to: '/product/jaggery-powder' },
+    { label: 'PANCHAKAVYA BIO-INPUTS', to: '/products?category=fertilizers' },
+    { label: 'CATTLE FEED', to: '/product/algae-cattle-feed-supplement' },
     { label: 'ALL PRODUCTS', to: '/products' },
   ];
 

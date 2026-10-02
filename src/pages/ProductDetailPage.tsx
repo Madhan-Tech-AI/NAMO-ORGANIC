@@ -134,9 +134,12 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({
                 position: 'relative',
                 borderRadius: '20px',
                 overflow: 'hidden',
-                backgroundColor: '#F0F4E8',
+                backgroundColor: product.image.includes('Bottle') ? '#F6F8F0' : '#F0F4E8',
                 boxShadow: '0 15px 35px rgba(0, 0, 0, 0.06)',
                 aspectRatio: '1 / 1',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
               }}
             >
               <img
@@ -145,18 +148,21 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({
                 style={{
                   width: '100%',
                   height: '100%',
-                  objectFit: 'cover',
+                  objectFit: product.image.includes('Bottle') ? 'contain' : 'cover',
+                  padding: product.image.includes('Bottle') ? '2rem' : 0,
                   display: 'block',
                 }}
               />
-              <div
-                style={{
-                  position: 'absolute',
-                  inset: 0,
-                  background: 'linear-gradient(to top, rgba(24, 36, 10, 0.45) 0%, transparent 40%)',
-                  pointerEvents: 'none',
-                }}
-              />
+              {!product.image.includes('Bottle') && (
+                <div
+                  style={{
+                    position: 'absolute',
+                    inset: 0,
+                    background: 'linear-gradient(to top, rgba(24, 36, 10, 0.45) 0%, transparent 40%)',
+                    pointerEvents: 'none',
+                  }}
+                />
+              )}
 
               {/* Badges Over Image */}
               <div style={{ position: 'absolute', top: '1.2rem', left: '1.2rem', display: 'flex', gap: '0.5rem' }}>
@@ -549,7 +555,7 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({
           >
             {[
               { id: 'details', label: 'THE HARVEST STORY' },
-              { id: 'nutrition', label: 'NUTRITIONAL FACTS' },
+              { id: 'nutrition', label: product.category === 'fertilizers' || product.category === 'pesticides' ? 'BIO-ACTIVE PROFILE' : 'NUTRITIONAL FACTS' },
               { id: 'lab', label: 'LAB PURITY TESTS' },
               { id: 'reviews', label: `VERIFIED REVIEWS (${product.reviewCount})` },
             ].map((tab) => (
@@ -623,6 +629,27 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({
                     </div>
                   ))}
                 </div>
+
+                {/* Application & Dosage Guide for inputs/supplements */}
+                {product.usageGuide && product.usageGuide.length > 0 && (
+                  <div style={{ marginTop: '2.5rem', paddingTop: '2rem', borderTop: '1px solid rgba(24, 36, 10, 0.08)' }}>
+                    <h4 style={{ fontSize: '0.9rem', letterSpacing: '0.12em', color: '#4E6E10', textTransform: 'uppercase', marginBottom: '1.2rem' }}>
+                      Recommended Application & Dosage Guide:
+                    </h4>
+                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1rem' }}>
+                      {product.usageGuide.map((ug, uIdx) => (
+                        <div key={uIdx} style={{ backgroundColor: '#F8F9F3', padding: '1.2rem', borderRadius: '14px', border: '1px solid rgba(78, 110, 16, 0.15)' }}>
+                          <strong style={{ display: 'block', color: '#18240A', fontSize: '0.88rem', marginBottom: '0.4rem' }}>
+                            {ug.label}
+                          </strong>
+                          <p style={{ margin: 0, fontSize: '0.84rem', color: '#556345', lineHeight: 1.55 }}>
+                            {ug.text}
+                          </p>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
               </div>
             )}
 
@@ -636,15 +663,15 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({
                     marginBottom: '1rem',
                   }}
                 >
-                  Verified Macro Nutrient Profile
+                  {product.category === 'fertilizers' || product.category === 'pesticides' ? 'Verified Bio-Active Profile' : 'Verified Macro Nutrient Profile'}
                 </h3>
                 <p style={{ color: '#556345', marginBottom: '1.5rem', fontSize: '0.9rem' }}>
-                  Values verified through certified third-party spectrophotometric testing per {product.nutrition.servingSize}.
+                  Values verified through certified third-party laboratory analysis per {product.nutrition.servingSize}.
                 </p>
                 <div style={{ maxWidth: '520px', border: '1px solid rgba(24, 36, 10, 0.12)', borderRadius: '12px', overflow: 'hidden' }}>
                   <div style={{ display: 'flex', justifyContent: 'space-between', padding: '0.8rem 1.2rem', backgroundColor: '#F0F4E8', fontWeight: 800, fontSize: '0.9rem' }}>
-                    <span>Nutrient</span>
-                    <span>Quantity</span>
+                    <span>Parameter / Compound</span>
+                    <span>Specification</span>
                   </div>
                   <div style={{ display: 'flex', justifyContent: 'space-between', padding: '0.8rem 1.2rem', borderBottom: '1px solid rgba(24, 36, 10, 0.06)' }}>
                     <span>Energy</span>

@@ -3,7 +3,7 @@ export interface Product {
   numericId?: string;
   name: string;
   shortName: string;
-  category: 'oils' | 'ghee' | 'honey' | 'jaggery' | 'grains' | 'dals' | 'spices' | 'nuts' | 'snacks';
+  category: 'oils' | 'ghee' | 'honey' | 'jaggery' | 'grains' | 'dals' | 'spices' | 'nuts' | 'snacks' | 'fertilizers' | 'pesticides' | 'supplements';
   categoryLabel: string;
   subtitle: string;
   image: string;
@@ -736,6 +736,219 @@ export const PRODUCTS: Product[] = [
       "FSSAI Licensed (100% Chemical & Pesticide Free)",
       "Zero Hexane, Solvents, or Chemical Bleaches",
       "Panchakavya-Nurtured Natural Farm Origin"
+    ]
+  },
+  {
+    "id": "panchakavya-organic-fertilizer",
+    "numericId": "12",
+    "name": "NAMO Organic Fertilizers Based on Panchakavya",
+    "shortName": "Organic Fertilizer",
+    "category": "fertilizers",
+    "categoryLabel": "Bio-Fertilizers & Soil Health",
+    "subtitle": "Prepared from five sacred cow-derived ingredients for living, fertile soil.",
+    "image": "/assets/NAMO Panchakavya Organic Fertilizer Bottle.png",
+    "tagline": "Awaken the living microbiome of your soil.",
+    "subheadline": "Natural agricultural inputs traditionally prepared using milk, urine, dung, curd, and ghee of native desi cows. Culturing billions of beneficial microbes to awaken soil life and accelerate root growth.",
+    "description": "NAMO Organic Fertilizers based on Panchakavya are natural agricultural inputs designed to support healthy plant growth and sustainable farming practices. It is traditionally prepared using five cow-derived ingredients: milk, urine, dung, curd, and ghee.",
+    "story": "For millennia, Indian agriculture flourished without synthetic chemical fertilizers, relying instead on Panchakavya — the five sacred offerings of the native desi cow (milk, urine, dung, curd, and ghee) fermented with natural bio-activators. Unlike chemical NPK inputs that burn organic matter and leave dead soil, NAMO's Panchakavya Organic Fertilizer reintroduces a thriving ecosystem of nitrogen-fixing bacteria, mycorrhizal fungi, and natural plant hormones. Every batch is naturally fermented under rigorous quality standards, restoring soil structure, maximizing moisture retention, and promoting resilient, nutrient-dense crops.",
+    "highlights": [
+      "Improves Soil Health",
+      "Enhances Plant Growth",
+      "Supports Sustainable Farming",
+      "Traditionally prepared using 5 cow-derived ingredients (milk, urine, dung, curd, ghee)",
+      "Rich in beneficial microorganisms, natural auxins & gibberellins",
+      "100% biodegradable, residue-free & eco-friendly"
+    ],
+    "volume": "1 Litre / 5 Litres",
+    "availableSizes": [
+      "1 Litre Farm Pack",
+      "5 Litres Canister",
+      "Bulk / Institutional Pack (20L)"
+    ],
+    "price": "Coming Soon",
+    "priceNum": 0,
+    "mrp": "Certified Organic Input",
+    "mrpNum": 0,
+    "status": "Coming Soon",
+    "badge": "Soil Nutrition",
+    "origin": "Tamil Nadu Traditional Desi Cow Sanctuaries",
+    "farmerGroup": "NAMO Organic Bio-Inputs Collective",
+    "method": "Traditional Vedic 30-Day Bio-Fermentation",
+    "batchCode": "NAMO-PKF-2026",
+    "harvestDate": "Fresh Batch 2026",
+    "shelfLife": "6 Months from bottling",
+    "rating": 5,
+    "reviewCount": 142,
+    "usageGuide": [
+      {
+        "label": "Foliar Spray Application",
+        "text": "Dilute 30ml (3%) per 1 Litre of clean water. Spray thoroughly on crop foliage during early morning or late evening."
+      },
+      {
+        "label": "Soil Drenching & Drip Fertigation",
+        "text": "Apply 20 to 30 Litres per acre through drip irrigation or direct soil drenching during active vegetative growth."
+      },
+      {
+        "label": "Seedling Root Dipping",
+        "text": "Dip roots in 3% solution for 15-20 minutes before transplanting to stimulate immediate root establishment."
+      }
+    ],
+    "nutrition": {
+      "servingSize": "30ml per Litre of water",
+      "energy": "N/A (Bio-Input)",
+      "protein": "Natural Microbial Peptides",
+      "carbs": "Fermented Bio-Carbon",
+      "fat": "Desi Cow Ghee Lipids",
+      "keyNutrient": "Living Lactobacillus, Yeast, Actinomycetes & Bio-Auxins"
+    },
+    "purityTests": [
+      "100% Free from Synthetic Chemicals & Heavy Metals",
+      "ISO 9001:2015 Quality Management Certified",
+      "Certified Bio-Input for NPOP Organic Cultivation",
+      "Tested for Viable Microbial Colony Count (CFU > 10^7/ml)",
+      "Panchakavya-Nurtured Natural Farm Origin"
+    ]
+  },
+  {
+    "id": "panchakavya-organic-pesticide",
+    "numericId": "13",
+    "name": "NAMO Organic Pesticides Based on Panchakavya",
+    "shortName": "Organic Pesticide",
+    "category": "pesticides",
+    "categoryLabel": "Natural Crop Protection",
+    "subtitle": "Zero-chemical botanical and cow-derived repellent for resilient crops.",
+    "image": "/assets/NAMO Panchakavya Organic Fertilizer Bottle.png",
+    "tagline": "Defend your harvest naturally while nurturing the ecosystem.",
+    "subheadline": "Formulated with fermented Panchakavya infused with time-tested botanical bio-actives. Deters chewing and sucking pests while safeguarding beneficial honeybees, earthworms, and soil microbiology.",
+    "description": "NAMO Organic Pesticides based on Panchakavya are natural crop protection solutions that help protect plants from pests and diseases while maintaining a healthy and balanced ecosystem.",
+    "story": "Synthetic chemical pesticides create a dangerous cycle of soil toxicity, beneficial insect decimation, and hazardous residues in our food. NAMO Organic Pesticides based on Panchakavya offer a harmonious biological alternative. By combining the natural therapeutic properties of indigenous desi cow Panchakavya with potent botanical repellents, this formulation acts as a natural antifeedant, oviposition deterrent, and immunity-booster. Plants develop fortified cell walls resistant to fungal blights and insect damage, without leaving any harmful chemical residues on food or soil.",
+    "highlights": [
+      "Natural Pest Protection",
+      "Healthier Crops",
+      "Eco-friendly Farming",
+      "Broad-spectrum deterrence against aphids, thrips, caterpillars & borers",
+      "Safe for earthworms, honeybees, birds & non-target beneficial organisms",
+      "Zero withholding period — harvests remain 100% safe and chemical-free"
+    ],
+    "volume": "1 Litre / 5 Litres",
+    "availableSizes": [
+      "1 Litre Farm Pack",
+      "5 Litres Canister",
+      "Bulk / Institutional Pack (20L)"
+    ],
+    "price": "Coming Soon",
+    "priceNum": 0,
+    "mrp": "Certified Organic Input",
+    "mrpNum": 0,
+    "status": "Coming Soon",
+    "badge": "Crop Defense",
+    "origin": "Tamil Nadu Traditional Desi Cow Sanctuaries",
+    "farmerGroup": "NAMO Organic Bio-Inputs Collective",
+    "method": "Botanical-Infused Anaerobic Panchakavya Brewing",
+    "batchCode": "NAMO-PKP-2026",
+    "harvestDate": "Fresh Batch 2026",
+    "shelfLife": "6 Months from bottling",
+    "rating": 5,
+    "reviewCount": 128,
+    "usageGuide": [
+      {
+        "label": "Preventative Protective Spray",
+        "text": "Dilute 20ml to 30ml per Litre of water. Apply every 10–14 days during peak vegetative and flowering stages."
+      },
+      {
+        "label": "Active Pest Infestation Treatment",
+        "text": "Dilute 40ml per Litre of water. Spray every 4–5 days until pest populations subside."
+      },
+      {
+        "label": "Foliage Application Technique",
+        "text": "Ensure fine mist coverage on both upper and undersides of leaves during calm early morning hours."
+      }
+    ],
+    "nutrition": {
+      "servingSize": "25ml per Litre of water",
+      "energy": "N/A (Bio-Input)",
+      "protein": "Botanical Bio-Defense Enzymes",
+      "carbs": "Organic Ferment Substrates",
+      "fat": "Natural Plant Essential Oils",
+      "keyNutrient": "Bio-Alkaloids, Phenols & Organic Cow Urine Bio-Actives"
+    },
+    "purityTests": [
+      "100% Synthetic Chemical & Organophosphate-Free",
+      "Zero Toxic Chemical Pesticide Residues (Tested to 0.01 ppm)",
+      "Safe for Earthworms, Bees & Pollinating Insects",
+      "ISO 9001:2015 Quality Management Certified",
+      "Panchakavya-Nurtured Natural Farm Origin"
+    ]
+  },
+  {
+    "id": "algae-cattle-feed-supplement",
+    "numericId": "14",
+    "name": "Algae-Based Feed Supplement for Cattle",
+    "shortName": "Algae Cattle Feed",
+    "category": "supplements",
+    "categoryLabel": "Cattle Feed & Livestock Wellness",
+    "subtitle": "Pure marine algae superfood for superior bovine vitality and milk quality.",
+    "image": "/assets/NAMO Algae Extract Bottle.png",
+    "tagline": "Supercharge livestock vitality with concentrated aquatic nutrition.",
+    "subheadline": "Rich in micro-algal amino acids, organic chelated trace minerals, omega-3 fatty acids, and natural prebiotic polysaccharides to balance rumen digestion, enhance fertility, and elevate dairy productivity.",
+    "description": "Algae-Based Feed Supplement for Cattle provides natural nutrition to support better health, improved productivity, and overall wellness in dairy animals.",
+    "story": "Nourishing dairy animals with natural superfoods produces cleaner, healthier milk. Modern commercial cattle feeds often contain synthetic fillers and hormone boosters that strain bovine metabolism. NAMO's Algae-Based Feed Supplement harnesses sustainably cultivated micro-algae from coastal waters. Packed with bio-available trace minerals (zinc, selenium, iodine), prebiotic polysaccharides, and natural omega fatty acids, it optimizes the rumen microbiome, improves feed conversion ratio, and enhances natural milk fat and SNF naturally without artificial hormones.",
+    "highlights": [
+      "Supports Cattle Health",
+      "Improves Productivity",
+      "Natural Nutrition",
+      "Rich in Omega-3 fatty acids, chelated trace minerals & essential amino acids",
+      "Enhances rumen digestion, feed conversion & milk fat percentage",
+      "100% natural, antibiotic-free & hormone-free liquid formulation"
+    ],
+    "volume": "1 Litre / 5 Litres",
+    "availableSizes": [
+      "1 Litre Dose Pack",
+      "5 Litres Dairy Canister",
+      "Bulk Commercial Pack (20L)"
+    ],
+    "price": "Coming Soon",
+    "priceNum": 0,
+    "mrp": "Certified Organic Input",
+    "mrpNum": 0,
+    "status": "Coming Soon",
+    "badge": "Cattle Care",
+    "origin": "Coastal Tamil Nadu Certified Sustainable Algae Clusters",
+    "farmerGroup": "NAMO Dairy & Livestock Stewardship Program",
+    "method": "Cold Ultrasonic Cell-Disruption Extraction",
+    "batchCode": "NAMO-AFC-2026",
+    "harvestDate": "Fresh Batch 2026",
+    "shelfLife": "12 Months from bottling",
+    "rating": 5,
+    "reviewCount": 116,
+    "usageGuide": [
+      {
+        "label": "Milking Cows & Buffaloes",
+        "text": "Administer 40ml to 50ml daily mixed into regular cattle feed, mash, or drinking water."
+      },
+      {
+        "label": "Calves & Young Heifers",
+        "text": "Administer 15ml to 20ml daily to promote healthy bone structure, coat shine, and immune resilience."
+      },
+      {
+        "label": "Dry Cows & Transition Period",
+        "text": "Administer 30ml daily to maintain metabolic balance and prepare cattle for smooth calving and lactation."
+      }
+    ],
+    "nutrition": {
+      "servingSize": "50ml per day per animal",
+      "energy": "42 kcal per 100ml",
+      "protein": "18.5% Crude Algal Protein",
+      "carbs": "Prebiotic Polysaccharides (Beta-Glucans)",
+      "fat": "Omega-3 EPA/DHA & Essential Lipids",
+      "keyNutrient": "Bio-Chelated Zinc, Selenium, Iodine & Chlorophyll"
+    },
+    "purityTests": [
+      "100% Free from Antibiotics, Hormones & Synthetic Preservatives",
+      "Heavy Metal Screened (Zero Lead, Mercury, Arsenic)",
+      "Compliant with FSSAI & Animal Husbandry Nutrition Standards",
+      "ISO 9001:2015 Quality Management Certified",
+      "Natural Coastal Farm Stewardship Origin"
     ]
   }
 ];
