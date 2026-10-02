@@ -914,14 +914,18 @@ export const NamoParallaxHero: React.FC = () => {
             </div>
           </div>
 
-          {/* RIGHT SIDE: 3-Bottle Panoramic Product Showcase (Center Mid, Proportional on Mobile) */}
+          {/* RIGHT/BOTTOM: 3-Bottle Panoramic Product Showcase (Center Mid on Bottom, Proportional on Mobile) */}
           <div
             className="hero-showcase-stage"
             style={{
-              flex: isMobile ? 'none' : '0 1 46%',
-              width: isMobile ? '100%' : 'auto',
-              height: isMobile ? '230px' : '100%',
+              flex: isMobile ? '1 1 auto' : '0 1 46%',
+              width: '100%',
+              maxWidth: isMobile ? '440px' : 'none',
+              height: isMobile ? 'auto' : '100%',
+              minHeight: isMobile ? 'clamp(255px, 34vh, 310px)' : 'none',
               marginTop: isMobile ? '0.4rem' : '0',
+              marginBottom: isMobile ? '0.2rem' : '0',
+              margin: isMobile ? 'auto auto' : '0',
               position: 'relative',
               display: 'flex',
               alignItems: 'center',
@@ -931,13 +935,16 @@ export const NamoParallaxHero: React.FC = () => {
           >
             {/* Stage Showcase Area - Centered in Mid */}
             <div
+              className="hero-showcase-inner"
               style={{
                 position: 'relative',
-                width: isMobile ? '270px' : 'clamp(380px, 38vw, 540px)',
-                height: isMobile ? '210px' : 'clamp(480px, 64vh, 620px)',
+                width: isMobile ? '100%' : 'clamp(380px, 38vw, 540px)',
+                maxWidth: isMobile ? '360px' : 'none',
+                height: isMobile ? 'clamp(245px, 32vh, 290px)' : 'clamp(480px, 64vh, 620px)',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
+                margin: '0 auto',
               }}
             >
               {/* Floating Stage Carousel Arrows */}
@@ -948,11 +955,11 @@ export const NamoParallaxHero: React.FC = () => {
                 className="stage-nav-arrow prev-arrow"
                 style={{
                   position: 'absolute',
-                  left: isMobile ? '2px' : '-24px',
+                  left: isMobile ? 'clamp(4px, 1.8vw, 10px)' : '-24px',
                   top: '50%',
                   transform: 'translateY(-50%)',
-                  width: isMobile ? '34px' : '52px',
-                  height: isMobile ? '34px' : '52px',
+                  width: isMobile ? '38px' : '52px',
+                  height: isMobile ? '38px' : '52px',
                   borderRadius: '50%',
                   backgroundColor: 'rgba(255, 255, 255, 0.95)',
                   backdropFilter: 'blur(10px)',
@@ -968,7 +975,7 @@ export const NamoParallaxHero: React.FC = () => {
                   transition: 'all 0.25s ease',
                 }}
               >
-                <ChevronLeft size={isMobile ? 18 : 30} color="#1B4D35" />
+                <ChevronLeft size={isMobile ? 20 : 30} color="#1B4D35" />
               </button>
 
               <button
@@ -978,11 +985,11 @@ export const NamoParallaxHero: React.FC = () => {
                 className="stage-nav-arrow next-arrow"
                 style={{
                   position: 'absolute',
-                  right: isMobile ? '2px' : '-24px',
+                  right: isMobile ? 'clamp(4px, 1.8vw, 10px)' : '-24px',
                   top: '50%',
                   transform: 'translateY(-50%)',
-                  width: isMobile ? '34px' : '52px',
-                  height: isMobile ? '34px' : '52px',
+                  width: isMobile ? '38px' : '52px',
+                  height: isMobile ? '38px' : '52px',
                   borderRadius: '50%',
                   backgroundColor: 'rgba(255, 255, 255, 0.95)',
                   backdropFilter: 'blur(10px)',
@@ -998,7 +1005,7 @@ export const NamoParallaxHero: React.FC = () => {
                   transition: 'all 0.25s ease',
                 }}
               >
-                <ChevronRight size={isMobile ? 18 : 30} color="#1B4D35" />
+                <ChevronRight size={isMobile ? 20 : 30} color="#1B4D35" />
               </button>
 
               {/* 3 Showcase Bottles (Proper Center Mid, Proportional Size on Mobile, No Badges) */}
@@ -1016,13 +1023,15 @@ export const NamoParallaxHero: React.FC = () => {
                       top: '50%',
                       left: '50%',
                       transform: isCenter
-                        ? 'translate(-50%, -50%) scale(1.08) rotate(0deg)'
+                        ? (isMobile
+                          ? 'translate(-50%, -50%) scale(1.0) rotate(0deg)'
+                          : 'translate(-50%, -50%) scale(1.08) rotate(0deg)')
                         : isRight
                           ? (isMobile
-                            ? 'translate(calc(-50% + 50px), -50%) scale(0.70) rotate(3deg)'
+                            ? 'translate(calc(-50% + clamp(66px, 18vw, 82px)), -50%) scale(0.70) rotate(3deg)'
                             : 'translate(calc(-50% + clamp(125px, 11vw, 165px)), -50%) scale(0.72) rotate(4deg)')
                           : (isMobile
-                            ? 'translate(calc(-50% - 50px), -50%) scale(0.70) rotate(-3deg)'
+                            ? 'translate(calc(-50% - clamp(66px, 18vw, 82px)), -50%) scale(0.70) rotate(-3deg)'
                             : 'translate(calc(-50% - clamp(125px, 11vw, 165px)), -50%) scale(0.72) rotate(-4deg)'),
                       zIndex: isCenter ? 12 : 5,
                       opacity: isCenter ? 1 : 0.88,
@@ -1037,14 +1046,14 @@ export const NamoParallaxHero: React.FC = () => {
                       if (!isCenter) handleSelectProduct(idx);
                     }}
                   >
-                    {/* Bottle Graphic (Transparent PNG, Sized to fit screen) */}
+                    {/* Bottle Graphic (Transparent PNG, Sized to fit screen properly) */}
                     <img
                       src={p.image}
                       alt={p.alt}
                       style={{
                         height: isCenter
-                          ? (isMobile ? '195px' : 'clamp(450px, 60vh, 580px)')
-                          : (isMobile ? '130px' : 'clamp(320px, 42vh, 410px)'),
+                          ? (isMobile ? 'clamp(225px, 29vh, 255px)' : 'clamp(450px, 60vh, 580px)')
+                          : (isMobile ? 'clamp(145px, 19vh, 168px)' : 'clamp(320px, 42vh, 410px)'),
                         width: 'auto',
                         maxWidth: '100%',
                         objectFit: 'contain',
@@ -1060,24 +1069,24 @@ export const NamoParallaxHero: React.FC = () => {
                     {isCenter ? (
                       <div
                         style={{
-                          width: '68%',
+                          width: '65%',
                           height: isMobile ? '14px' : '22px',
                           borderRadius: '50%',
                           background:
-                            'radial-gradient(ellipse at center, rgba(20, 35, 15, 0.40) 0%, rgba(20, 35, 15, 0.12) 50%, transparent 75%)',
+                            'radial-gradient(ellipse at center, rgba(20, 35, 15, 0.38) 0%, rgba(20, 35, 15, 0.10) 50%, transparent 75%)',
                           filter: isMobile ? 'blur(3px)' : 'blur(5px)',
-                          marginTop: isMobile ? '-5px' : '-10px',
+                          marginTop: isMobile ? '-6px' : '-10px',
                           pointerEvents: 'none',
                         }}
                       />
                     ) : (
                       <div
                         style={{
-                          width: '56%',
+                          width: '54%',
                           height: isMobile ? '10px' : '14px',
                           borderRadius: '50%',
                           background:
-                            'radial-gradient(ellipse at center, rgba(20, 35, 15, 0.30) 0%, transparent 70%)',
+                            'radial-gradient(ellipse at center, rgba(20, 35, 15, 0.28) 0%, transparent 70%)',
                           filter: 'blur(3px)',
                           marginTop: isMobile ? '-4px' : '-6px',
                           pointerEvents: 'none',
@@ -1094,6 +1103,18 @@ export const NamoParallaxHero: React.FC = () => {
 
       {/* Micro-interaction Hover & Keyframe Styles */}
       <style>{`
+        #namo-parallax-hero-wrapper {
+          background-color: #F8F9F3 !important;
+          border: none !important;
+          outline: none !important;
+          overflow-x: hidden !important;
+        }
+        #namo-parallax-hero-stage {
+          background-color: #F8F9F3 !important;
+          border: none !important;
+          outline: none !important;
+          overflow-x: hidden !important;
+        }
         .hero-cta-group {
           display: flex !important;
           flex-direction: row !important;
@@ -1105,9 +1126,66 @@ export const NamoParallaxHero: React.FC = () => {
           grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
         }
         @media (max-width: 768px) {
+          #namo-parallax-hero-wrapper {
+            background-color: #F8F9F3 !important;
+            border: none !important;
+            outline: none !important;
+            overflow-x: hidden !important;
+          }
+          #namo-parallax-hero-stage {
+            min-height: 100vh !important;
+            height: auto !important;
+            background-color: #F8F9F3 !important;
+            border: none !important;
+            outline: none !important;
+            overflow-x: hidden !important;
+          }
+          .hero-main-container {
+            flex-direction: column !important;
+            align-items: center !important;
+            justify-content: space-between !important;
+            padding: clamp(7.6rem, 14vh, 8.8rem) 1rem 1.25rem 1rem !important;
+            border: none !important;
+            outline: none !important;
+            overflow-x: hidden !important;
+          }
+          .hero-content-inner {
+            width: 100% !important;
+            max-width: 580px !important;
+            margin: 0 auto !important;
+            text-align: center !important;
+            display: flex !important;
+            flex-direction: column !important;
+            align-items: center !important;
+          }
+          .hero-showcase-stage {
+            flex: 1 1 auto !important;
+            width: 100% !important;
+            max-width: 440px !important;
+            height: auto !important;
+            min-height: clamp(255px, 34vh, 310px) !important;
+            margin: auto auto !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            position: relative !important;
+          }
+          .hero-showcase-inner {
+            position: relative !important;
+            width: 100% !important;
+            max-width: 360px !important;
+            height: clamp(245px, 32vh, 290px) !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            margin: 0 auto !important;
+          }
           .hero-specs-grid {
+            display: grid !important;
             grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
             gap: 0.35rem !important;
+            width: 100% !important;
+            margin-bottom: 0.55rem !important;
           }
           .hero-cta-group {
             display: flex !important;
@@ -1115,6 +1193,7 @@ export const NamoParallaxHero: React.FC = () => {
             flex-wrap: nowrap !important;
             gap: 0.45rem !important;
             width: 100% !important;
+            justify-content: center !important;
           }
           .hero-btn-primary, .hero-btn-secondary {
             flex: 1 1 50% !important;
@@ -1124,6 +1203,7 @@ export const NamoParallaxHero: React.FC = () => {
             letter-spacing: 0.04em !important;
             justify-content: center !important;
             white-space: nowrap !important;
+            border-radius: 9999px !important;
           }
         }
         .stage-nav-arrow:hover {
