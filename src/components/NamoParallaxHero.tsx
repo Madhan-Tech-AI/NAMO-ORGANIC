@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Sparkles, ChevronDown } from 'lucide-react';
@@ -16,6 +16,22 @@ export const NamoParallaxHero: React.FC = () => {
   const bigLogoRef = useRef<HTMLDivElement>(null);
   const heroContentRef = useRef<HTMLDivElement>(null);
   const textVignetteRef = useRef<HTMLDivElement>(null);
+
+  // Responsive check for mobile view (<= 768px)
+  const [isMobile, setIsMobile] = useState<boolean>(() => {
+    if (typeof window !== 'undefined') {
+      return window.innerWidth <= 768;
+    }
+    return false;
+  });
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   useEffect(() => {
     const wrapper = wrapperRef.current;
@@ -112,7 +128,8 @@ export const NamoParallaxHero: React.FC = () => {
 
       // =======================================================================
       // PHASE 1: Landscape Parallax (0.0 -> 0.32)
-      // Translucent NAMO Over Misty Mountain Sunrise with foreground vegetation
+      // Desktop: Translucent NAMO Over Misty Mountain Sunrise
+      // Mobile: Golden Mists Over Mountain Forests
       // Foreground drops away smoothly with linear scroll tracking
       // =======================================================================
       tl.to(
@@ -350,7 +367,9 @@ export const NamoParallaxHero: React.FC = () => {
         }}
       >
         {/* ===================================================================
-            LAYER 1A (PARALLAX BACKGROUND): Translucent NAMO Over Misty Mountain Sunrise
+            LAYER 1A (PARALLAX BACKGROUND): 
+            Desktop: Translucent NAMO Over Misty Mountain Sunrise
+            Mobile: Golden Mists Over Mountain Forests
             ONLY in the parallax effect background!
             =================================================================== */}
         <div
@@ -364,23 +383,52 @@ export const NamoParallaxHero: React.FC = () => {
             pointerEvents: 'none',
           }}
         >
-          <img
-            ref={parallaxBgRef}
-            src="/assets/Translucent NAMO Over Misty Mountain Sunrise.png"
-            alt="Translucent NAMO Over Misty Mountain Sunrise"
+          <picture
             style={{
               position: 'absolute',
-              left: 0,
-              bottom: 0,
+              inset: 0,
               width: '100%',
               height: '100%',
-              objectFit: 'cover',
-              objectPosition: 'center 45%',
-              willChange: 'transform, opacity',
-              transform: 'translate3d(0, 0, 0)',
               display: 'block',
+              overflow: 'hidden',
             }}
-          />
+          >
+            {/* Mobile View: Golden Mists Over Mountain Forests */}
+            <source
+              media="(max-width: 768px)"
+              srcSet="/assets/Golden%20Mists%20Over%20Mountain%20Forests.png"
+            />
+            {/* Desktop View: Translucent NAMO Over Misty Mountain Sunrise */}
+            <source
+              media="(min-width: 769px)"
+              srcSet="/assets/Translucent%20NAMO%20Over%20Misty%20Mountain%20Sunrise.png"
+            />
+            <img
+              ref={parallaxBgRef}
+              src={
+                isMobile
+                  ? '/assets/Golden Mists Over Mountain Forests.png'
+                  : '/assets/Translucent NAMO Over Misty Mountain Sunrise.png'
+              }
+              alt={
+                isMobile
+                  ? 'Golden Mists Over Mountain Forests'
+                  : 'Translucent NAMO Over Misty Mountain Sunrise'
+              }
+              style={{
+                position: 'absolute',
+                left: 0,
+                bottom: 0,
+                width: '100%',
+                height: '100%',
+                objectFit: 'cover',
+                objectPosition: 'center 45%',
+                willChange: 'transform, opacity',
+                transform: 'translate3d(0, 0, 0)',
+                display: 'block',
+              }}
+            />
+          </picture>
         </div>
 
         {/* ===================================================================
