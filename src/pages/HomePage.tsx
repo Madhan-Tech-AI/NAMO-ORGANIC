@@ -1,64 +1,67 @@
 import React from 'react';
 import { NamoParallaxHero } from '../components/NamoParallaxHero';
-import { NaturePreserved } from '../components/NaturePreserved';
-import { HorizontalJourney } from '../components/HorizontalJourney';
-import { ProductShowcase } from '../components/ProductShowcase';
-import { EditorialPantry } from '../components/EditorialPantry';
-import { WhyNamo } from '../components/WhyNamo';
-import { OurStory } from '../components/OurStory';
-import { FarmersSection } from '../components/FarmersSection';
-import { QualityPromise } from '../components/QualityPromise';
-import { FinalCTA } from '../components/FinalCTA';
+import { AboutSection } from '../components/AboutSection';
+import { VisionMissionSection } from '../components/VisionMissionSection';
+import { ProblemSection } from '../components/ProblemSection';
+import { SolutionsSection } from '../components/SolutionsSection';
+import { ServicesSection } from '../components/ServicesSection';
+import { FocusProductsSection } from '../components/FocusProductsSection';
+import { WhyChooseNamoSection } from '../components/WhyChooseNamoSection';
+import { BenefitsSection } from '../components/BenefitsSection';
+import { MarketOpportunitySection } from '../components/MarketOpportunitySection';
+import { TargetCustomersSection } from '../components/TargetCustomersSection';
+import { ValuePropositionSection } from '../components/ValuePropositionSection';
+import { RevenueModelSection } from '../components/RevenueModelSection';
+import { AimToScaleSection } from '../components/AimToScaleSection';
+import { ContactSection } from '../components/ContactSection';
 
-interface HomePageProps {
-  onAddToCart: (productName: string, price: string) => void;
-  onOpenTraceabilityWithBatch: (batchCode: string) => void;
-  onOpenTraceability: () => void;
-}
-
-export const HomePage: React.FC<HomePageProps> = ({
-  onAddToCart,
-  onOpenTraceabilityWithBatch,
-  onOpenTraceability,
-}) => {
+export const HomePage: React.FC = () => {
   return (
     <main>
-      {/* 01: Full-Screen Cinematic Parallax Hero (Misty Mountain Sunrise Parallax -> Ivory Glow Logo -> Flying Logo -> Hero with Overlay Texts) */}
+      {/* 01: Hero Section */}
       <NamoParallaxHero />
 
-      {/* 02: Nature, Preserved */}
-      <NaturePreserved />
+      {/* 02: About the Company */}
+      <AboutSection />
 
-      {/* 08 & 09: Philosophy & Horizontal Farm to Family Journey */}
-      <HorizontalJourney />
+      {/* 03: Vision & Mission */}
+      <VisionMissionSection />
 
-      {/* 10: Products Cinematic Showcase */}
-      <ProductShowcase
-        onAddToCart={handleAddToCart}
-        onOpenTraceabilityWithBatch={onOpenTraceabilityWithBatch}
-      />
+      {/* 04: The Problem — Challenges Facing Agriculture */}
+      <ProblemSection />
 
-      {/* 11 & 12: Dals & Pulses, Nuts & Dry Fruits Editorial Pantry */}
-      <EditorialPantry onAddToCart={handleAddToCart} />
+      {/* 05: Our Solutions — Sustainable Agriculture */}
+      <SolutionsSection />
 
-      {/* 13: Why NAMO (6 Immersive Visual Cards) */}
-      <WhyNamo />
+      {/* 06: Our Services — Healthy Soil. Thriving Farmers */}
+      <ServicesSection />
 
-      {/* 14: Our Story — A Bridge Between Generations */}
-      <OurStory />
+      {/* 07: Our Focus Products — Panchakavya & Algae Solutions */}
+      <FocusProductsSection />
 
-      {/* 15: Farmers Section — The People Behind Every Product */}
-      <FarmersSection />
+      {/* 08: Unique Selling Proposition — Why Choose NAMO? */}
+      <WhyChooseNamoSection />
 
-      {/* 16: Quality Promise — Minimalist Cream Transition */}
-      <QualityPromise onOpenTraceability={onOpenTraceability} />
+      {/* 09: Benefits of NAMO Organic Fertilizers & Pesticides */}
+      <BenefitsSection />
 
-      {/* 17: Final CTA — Golden Sunset Landscape */}
-      <FinalCTA />
+      {/* 10: Market Opportunity — India's Agricultural Market */}
+      <MarketOpportunitySection />
+
+      {/* 11: Target Customers — Farmers & FPOs */}
+      <TargetCustomersSection />
+
+      {/* 12: Value Proposition — Soil Fertility & Prosperity */}
+      <ValuePropositionSection />
+
+      {/* 13: Revenue Model — Multi-Channel Agrarian Architecture */}
+      <RevenueModelSection />
+
+      {/* 14: Aim to Scale — Expanding Manufacturing & Reach */}
+      <AimToScaleSection />
+
+      {/* 15: Contact Us — Headquarters & Inquiry Form */}
+      <ContactSection />
     </main>
   );
-
-  function handleAddToCart(name: string, price: string) {
-    onAddToCart(name, price);
-  }
 };

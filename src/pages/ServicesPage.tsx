@@ -1,35 +1,27 @@
 import React from 'react';
 import { PageHeader } from '../components/PageHeader';
-import { FocusProductsSection } from '../components/FocusProductsSection';
-import { WhyChooseNamoSection } from '../components/WhyChooseNamoSection';
-import { BenefitsSection } from '../components/BenefitsSection';
+import { ServicesSection } from '../components/ServicesSection';
 import { Link } from 'react-router-dom';
-import { ArrowRight, BarChart3, Mail } from 'lucide-react';
+import { ArrowRight, Sparkles, Mail } from 'lucide-react';
 
-export const ProductsPage: React.FC = () => {
+export const ServicesPage: React.FC = () => {
   return (
     <main>
       <PageHeader
-        badge="FLAGSHIP BIO-INPUTS"
-        title="Natural Solutions for Sustainable Agriculture"
-        subtitle="Traditionally prepared Panchakavya bio-fertilizers, botanical pest barriers, and cattle feed supplements — scientifically formulated for all crops and climatic zones."
+        badge="AGRARIAN SERVICES & SOLUTIONS"
+        title="Healthy Soil. Thriving Farmers. A Greener Tomorrow."
+        subtitle="NAMO provides an extensive suite of agricultural products, field consultancy, and technology-oriented solutions to power India’s sustainable farming transition."
         breadcrumbs={[
           { label: 'Home', to: '/' },
-          { label: 'Focus Products' },
+          { label: 'Services' },
         ]}
       />
 
-      {/* 07: Focus Products Showcase */}
-      <FocusProductsSection />
+      {/* 06: Full 9-Services Grid */}
+      <ServicesSection />
 
-      {/* 08: Unique Selling Proposition — Why Choose NAMO */}
-      <WhyChooseNamoSection />
-
-      {/* 09: Benefits of NAMO Organic Fertilizers & Pesticides */}
-      <BenefitsSection />
-
-      {/* CTA to Market Opportunity or Contact */}
-      <section style={{ padding: '5rem 2rem', backgroundColor: '#FFFFFF', borderTop: '1px solid rgba(24, 36, 10, 0.08)' }}>
+      {/* Bottom CTA to Focus Products */}
+      <section style={{ padding: '5rem 2rem', backgroundColor: '#F8F9F3', borderTop: '1px solid rgba(24, 36, 10, 0.08)' }}>
         <div style={{ maxWidth: '1100px', margin: '0 auto', textAlign: 'center' }}>
           <h3
             style={{
@@ -41,16 +33,16 @@ export const ProductsPage: React.FC = () => {
               marginBottom: '1rem',
             }}
           >
-            Explore India's Agricultural Market & Scalable Model
+            Discover Our Panchakavya & Algae Formulations
           </h3>
           <p style={{ fontSize: '1.05rem', color: '#4A583A', maxWidth: '680px', margin: '0 auto 2rem auto', lineHeight: 1.7 }}>
-            Understand the US $24B agricultural market opportunity, our circular FPO partnerships, and multi-channel
-            commercial growth model.
+            Explore the flagship bio-fertilizers, natural crop pesticides, and cattle supplements engineered
+            by NAMO.
           </p>
 
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '1rem', flexWrap: 'wrap' }}>
             <Link
-              to="/market"
+              to="/products"
               style={{
                 display: 'inline-flex',
                 alignItems: 'center',
@@ -67,8 +59,8 @@ export const ProductsPage: React.FC = () => {
                 boxShadow: '0 6px 20px rgba(27, 77, 53, 0.25)',
               }}
             >
-              <BarChart3 size={16} color="#FFDB15" />
-              <span>View Market & Growth Model</span>
+              <Sparkles size={16} color="#FFDB15" />
+              <span>Explore Focus Products</span>
               <ArrowRight size={16} />
             </Link>
 
@@ -78,7 +70,7 @@ export const ProductsPage: React.FC = () => {
                 display: 'inline-flex',
                 alignItems: 'center',
                 gap: '0.5rem',
-                backgroundColor: '#F0F4E8',
+                backgroundColor: '#FFFFFF',
                 color: '#293B14',
                 border: '1.5px solid rgba(103, 160, 32, 0.4)',
                 padding: '0.85rem 2.2rem',
@@ -91,7 +83,7 @@ export const ProductsPage: React.FC = () => {
               }}
             >
               <Mail size={16} color="#4E6E10" />
-              <span>Request Product Technical Dossier</span>
+              <span>Inquire Advisory Services</span>
             </Link>
           </div>
         </div>

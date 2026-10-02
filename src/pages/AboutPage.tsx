@@ -1,34 +1,38 @@
 import React from 'react';
 import { PageHeader } from '../components/PageHeader';
-import { FocusProductsSection } from '../components/FocusProductsSection';
-import { WhyChooseNamoSection } from '../components/WhyChooseNamoSection';
-import { BenefitsSection } from '../components/BenefitsSection';
+import { AboutSection } from '../components/AboutSection';
+import { VisionMissionSection } from '../components/VisionMissionSection';
+import { ProblemSection } from '../components/ProblemSection';
+import { SolutionsSection } from '../components/SolutionsSection';
 import { Link } from 'react-router-dom';
-import { ArrowRight, BarChart3, Mail } from 'lucide-react';
+import { ArrowRight, Briefcase, Mail } from 'lucide-react';
 
-export const ProductsPage: React.FC = () => {
+export const AboutPage: React.FC = () => {
   return (
     <main>
       <PageHeader
-        badge="FLAGSHIP BIO-INPUTS"
-        title="Natural Solutions for Sustainable Agriculture"
-        subtitle="Traditionally prepared Panchakavya bio-fertilizers, botanical pest barriers, and cattle feed supplements — scientifically formulated for all crops and climatic zones."
+        badge="ABOUT THE COMPANY"
+        title="Cultivating a Greener Tomorrow"
+        subtitle="Natural Solutions for a Better Tomorrow — We support technical advancement in agriculture through field-based solutions, organic fertilizers, and sustainable farming systems."
         breadcrumbs={[
           { label: 'Home', to: '/' },
-          { label: 'Focus Products' },
+          { label: 'About Us' },
         ]}
       />
 
-      {/* 07: Focus Products Showcase */}
-      <FocusProductsSection />
+      {/* 02: About Company Narrative & 3 Focus Pillars */}
+      <AboutSection />
 
-      {/* 08: Unique Selling Proposition — Why Choose NAMO */}
-      <WhyChooseNamoSection />
+      {/* 03: Vision, Mission & Core Philosophy */}
+      <VisionMissionSection />
 
-      {/* 09: Benefits of NAMO Organic Fertilizers & Pesticides */}
-      <BenefitsSection />
+      {/* 04: The Problem — Challenges Facing Agriculture */}
+      <ProblemSection />
 
-      {/* CTA to Market Opportunity or Contact */}
+      {/* 05: Our Solutions — Biodiversity & Resilience */}
+      <SolutionsSection />
+
+      {/* Action Banner to Explore Services or Contact */}
       <section style={{ padding: '5rem 2rem', backgroundColor: '#FFFFFF', borderTop: '1px solid rgba(24, 36, 10, 0.08)' }}>
         <div style={{ maxWidth: '1100px', margin: '0 auto', textAlign: 'center' }}>
           <h3
@@ -41,16 +45,15 @@ export const ProductsPage: React.FC = () => {
               marginBottom: '1rem',
             }}
           >
-            Explore India's Agricultural Market & Scalable Model
+            Ready to Explore Our Agricultural Solutions?
           </h3>
           <p style={{ fontSize: '1.05rem', color: '#4A583A', maxWidth: '680px', margin: '0 auto 2rem auto', lineHeight: 1.7 }}>
-            Understand the US $24B agricultural market opportunity, our circular FPO partnerships, and multi-channel
-            commercial growth model.
+            Discover our comprehensive range of 9 agrarian services, or connect directly with our advisory specialists.
           </p>
 
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '1rem', flexWrap: 'wrap' }}>
             <Link
-              to="/market"
+              to="/services"
               style={{
                 display: 'inline-flex',
                 alignItems: 'center',
@@ -67,8 +70,8 @@ export const ProductsPage: React.FC = () => {
                 boxShadow: '0 6px 20px rgba(27, 77, 53, 0.25)',
               }}
             >
-              <BarChart3 size={16} color="#FFDB15" />
-              <span>View Market & Growth Model</span>
+              <Briefcase size={16} color="#FFDB15" />
+              <span>Explore Our Services</span>
               <ArrowRight size={16} />
             </Link>
 
@@ -91,7 +94,7 @@ export const ProductsPage: React.FC = () => {
               }}
             >
               <Mail size={16} color="#4E6E10" />
-              <span>Request Product Technical Dossier</span>
+              <span>Contact Headquarters</span>
             </Link>
           </div>
         </div>

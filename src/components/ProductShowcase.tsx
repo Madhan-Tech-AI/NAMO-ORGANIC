@@ -13,7 +13,7 @@ export const ProductShowcase: React.FC<ProductShowcaseProps> = ({
   onAddToCart: _onAddToCart,
   onOpenTraceabilityWithBatch,
 }) => {
-  // Curated showcase products: Flagship Vedic pantry items + the 3 new Agri/Livestock innovations
+
   const showcaseProductIds = [
     'sesame-oil',
     'a2-ghee',
@@ -142,7 +142,7 @@ export const ProductShowcase: React.FC<ProductShowcaseProps> = ({
           })}
         </div>
 
-        {/* Main Editorial Product Scene */}
+
         <div
           style={{
             borderRadius: '30px',
