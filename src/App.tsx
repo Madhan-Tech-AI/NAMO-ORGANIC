@@ -26,6 +26,8 @@ export function App() {
       smoothWheel: true,
     });
 
+    (window as any).lenis = lenis;
+
     lenis.on('scroll', ScrollTrigger.update);
 
     const tickerCallback = (time: number) => {
@@ -38,6 +40,7 @@ export function App() {
     return () => {
       gsap.ticker.remove(tickerCallback);
       lenis.destroy();
+      (window as any).lenis = null;
     };
   }, []);
 
@@ -52,6 +55,10 @@ export function App() {
 function AppContent() {
   const location = useLocation();
   const isHomePage = location.pathname === '/';
+  const isParallaxDone =
+    typeof window !== 'undefined' &&
+    (sessionStorage.getItem('namo_parallax_done') === 'true' || window.scrollY > 200);
+  const showNavImmediately = !isHomePage || isParallaxDone;
 
   return (
     <div style={{ position: 'relative', width: '100%', minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
@@ -59,8 +66,8 @@ function AppContent() {
       <div className="film-grain" />
 
       {/* Global Corporate Navbar:
-          - On sub-pages: sticky at top: 0, immediately visible
-          - On Home page: fixed at top: 0, reveals smoothly as the hero parallax docks */}
+          - On sub-pages or when parallax is done: sticky/fixed at top: 0, immediately visible
+          - On Home page on first fresh visit: fixed at top: 0, reveals smoothly as the hero parallax docks */}
       <div
         id="global-navbar"
         style={{
@@ -69,8 +76,8 @@ function AppContent() {
           left: 0,
           width: '100%',
           zIndex: 1100,
-          opacity: isHomePage ? 0 : 1,
-          pointerEvents: isHomePage ? 'none' : 'auto',
+          opacity: showNavImmediately ? 1 : 0,
+          pointerEvents: showNavImmediately ? 'auto' : 'none',
           transition: 'opacity 0.2s ease',
         }}
       >

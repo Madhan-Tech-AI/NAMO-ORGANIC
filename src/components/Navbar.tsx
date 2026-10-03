@@ -147,7 +147,7 @@ export const Navbar: React.FC = () => {
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'space-between',
-            gap: '0.85rem',
+            gap: 'clamp(0.75rem, 1.5vw, 1.5rem)',
           }}
         >
           {/* Brand Logo & Name */}
@@ -159,32 +159,32 @@ export const Navbar: React.FC = () => {
               textDecoration: 'none',
               display: 'flex',
               alignItems: 'center',
-              gap: '0.65rem',
-              flexShrink: 1,
-              minWidth: 0,
+              gap: '0.70rem',
+              flexShrink: 0,
             }}
             title="Natural Agriculture & Modern Organic Private Limited"
           >
             <img
+              id="navbar-center-logo"
               src="/assets/Fashions__11_-removebg-preview.png"
               alt="NAMO Logo"
               className="corp-brand-logo"
               style={{
-                height: isScrolled ? '46px' : '56px',
+                height: isScrolled ? '44px' : '52px',
                 width: 'auto',
                 objectFit: 'contain',
                 transition: 'height 0.25s ease',
                 flexShrink: 0,
               }}
             />
-            <div style={{ display: 'flex', flexDirection: 'column', minWidth: 0, flexShrink: 1 }}>
+            <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', flexShrink: 0 }}>
               <span
                 className="corp-brand-title"
                 style={{
                   fontFamily: 'var(--font-display, "Plus Jakarta Sans", sans-serif)',
-                  fontSize: isScrolled ? '1.15rem' : '1.30rem',
+                  fontSize: isScrolled ? '1.12rem' : '1.24rem',
                   fontWeight: 800,
-                  letterSpacing: '0.03em',
+                  letterSpacing: '0.025em',
                   color: '#18240A',
                   lineHeight: 1.1,
                   transition: 'font-size 0.25s ease',
@@ -196,15 +196,17 @@ export const Navbar: React.FC = () => {
               <span
                 className="corp-brand-subtitle"
                 style={{
-                  fontSize: '0.60rem',
-                  letterSpacing: '0.06em',
+                  fontSize: 'clamp(0.54rem, 0.60vw, 0.62rem)',
+                  letterSpacing: '0.04em',
                   fontWeight: 700,
                   color: '#1b4d35',
                   textTransform: 'uppercase',
-                  lineHeight: 1.18,
+                  lineHeight: 1.2,
+                  whiteSpace: 'nowrap',
+                  display: 'block',
                 }}
               >
-                Natural Agriculture & Modern Organic Pvt Ltd
+                Natural Agriculture & Modern Organic Pvt. Ltd.
               </span>
             </div>
           </Link>
@@ -214,7 +216,7 @@ export const Navbar: React.FC = () => {
             style={{
               display: 'flex',
               alignItems: 'center',
-              gap: 'clamp(0.6rem, 1.4vw, 1.8rem)',
+              gap: 'clamp(0.6rem, 1.25vw, 1.6rem)',
               whiteSpace: 'nowrap',
             }}
             className="corporate-desktop-nav"

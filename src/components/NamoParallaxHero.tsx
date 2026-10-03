@@ -95,6 +95,25 @@ export const NamoParallaxHero: React.FC = () => {
     handleSelectProduct((activeProductIndex - 1 + heroProducts.length) % heroProducts.length);
   };
 
+  // Helper to check if intro was already completed in this browser session
+  const checkIntroDone = (): boolean => {
+    if (typeof window === 'undefined') return false;
+    // Allow ?intro=true in URL to force replay for testing
+    if (window.location.search.includes('intro=true')) {
+      try {
+        sessionStorage.removeItem('namo_parallax_done');
+      } catch {}
+      return false;
+    }
+    try {
+      return sessionStorage.getItem('namo_parallax_done') === 'true' || window.scrollY > 200;
+    } catch {
+      return false;
+    }
+  };
+
+  const [isParallaxDone, setIsParallaxDone] = useState<boolean>(checkIntroDone);
+
   useEffect(() => {
     const handleResize = () => {
       setIsMobile(window.innerWidth <= 768);
@@ -114,17 +133,48 @@ export const NamoParallaxHero: React.FC = () => {
     const heroContent = heroContentRef.current;
     const textVignette = textVignetteRef.current;
 
-    if (!wrapper || !stage || !parallaxBg || !heroBg || !fgContainer || !whiteBackdrop || !bigLogo || !heroContent) {
+    if (!wrapper || !stage || !heroBg || !heroContent) {
       return;
     }
 
-    // If loaded already scrolled down past the intro, show the navbar immediately
-    if (window.scrollY > window.innerHeight * 0.8) {
+    // Always ensure global-navbar is visible if parallax is already completed or user is scrolled
+    if (isParallaxDone || window.scrollY > window.innerHeight * 0.5) {
       const navEl = document.getElementById('global-navbar');
       if (navEl) {
         navEl.style.opacity = '1';
         navEl.style.pointerEvents = 'auto';
       }
+    }
+
+    // If parallax is already done, render static completed Hero directly (no pinned runway!)
+    if (isParallaxDone) {
+      if (parallaxBg) gsap.set(parallaxBg, { opacity: 0, display: 'none' });
+      if (fgContainer) gsap.set(fgContainer, { opacity: 0, display: 'none' });
+      if (whiteBackdrop) gsap.set(whiteBackdrop, { opacity: 0, display: 'none' });
+      if (bigLogo) gsap.set(bigLogo, { opacity: 0, display: 'none' });
+      gsap.set(heroBg, { opacity: 1, display: 'block' });
+      gsap.set(heroContent, { opacity: 1, y: 0, clearProps: 'transform' });
+      if (textVignette) gsap.set(textVignette, { opacity: 1, display: 'block' });
+
+      wrapper.style.height = 'auto';
+      wrapper.style.minHeight = '100vh';
+      stage.style.position = 'relative';
+      stage.style.height = '100vh';
+      stage.style.transform = 'none';
+      stage.style.top = '0';
+      stage.style.left = '0';
+
+      const navEl = document.getElementById('global-navbar');
+      if (navEl) {
+        navEl.style.opacity = '1';
+        navEl.style.pointerEvents = 'auto';
+      }
+      return;
+    }
+
+    // If intro not done, verify intro elements exist
+    if (!parallaxBg || !fgContainer || !whiteBackdrop || !bigLogo) {
+      return;
     }
 
     const ctx = gsap.context(() => {
@@ -133,13 +183,13 @@ export const NamoParallaxHero: React.FC = () => {
 
       // Mobile setup (<= 768px): Instant reveal, fully interactive without 420% pinned dead scroll space
       mm.add('(max-width: 768px)', () => {
-        gsap.set(whiteBackdrop, { opacity: 0 });
-        gsap.set(bigLogo, { opacity: 0 });
-        gsap.set(parallaxBg, { opacity: 0 });
-        gsap.set(fgContainer, { opacity: 0 });
-        gsap.set(heroBg, { opacity: 1 });
+        gsap.set(whiteBackdrop, { opacity: 0, display: 'none' });
+        gsap.set(bigLogo, { opacity: 0, display: 'none' });
+        gsap.set(parallaxBg, { opacity: 0, display: 'none' });
+        gsap.set(fgContainer, { opacity: 0, display: 'none' });
+        gsap.set(heroBg, { opacity: 1, display: 'block' });
         gsap.set(heroContent, { opacity: 1, y: 0 });
-        if (textVignette) gsap.set(textVignette, { opacity: 1 });
+        if (textVignette) gsap.set(textVignette, { opacity: 1, display: 'block' });
 
         const navEl = document.getElementById('global-navbar');
         if (navEl) {
@@ -151,13 +201,13 @@ export const NamoParallaxHero: React.FC = () => {
       // Desktop setup (> 768px): Master Pinned Scroll Timeline with 7 Cinematic Parallax Phases
       mm.add('(min-width: 769px)', () => {
         if (prefersReducedMotion) {
-          // Simple static fallback for reduced motion
-          gsap.set(whiteBackdrop, { opacity: 0 });
-          gsap.set(bigLogo, { opacity: 0 });
-          gsap.set(parallaxBg, { opacity: 0 });
-          gsap.set(heroBg, { opacity: 1 });
+          gsap.set(whiteBackdrop, { opacity: 0, display: 'none' });
+          gsap.set(bigLogo, { opacity: 0, display: 'none' });
+          gsap.set(parallaxBg, { opacity: 0, display: 'none' });
+          gsap.set(fgContainer, { opacity: 0, display: 'none' });
+          gsap.set(heroBg, { opacity: 1, display: 'block' });
           gsap.set(heroContent, { opacity: 1, y: 0 });
-          if (textVignette) gsap.set(textVignette, { opacity: 1 });
+          if (textVignette) gsap.set(textVignette, { opacity: 1, display: 'block' });
           const navEl = document.getElementById('global-navbar');
           if (navEl) {
             navEl.style.opacity = '1';
@@ -167,22 +217,87 @@ export const NamoParallaxHero: React.FC = () => {
         }
 
         // Initial Reset for Desktop Parallax
-        gsap.set(parallaxBg, { yPercent: 0, scale: 1, opacity: 1, transformOrigin: 'center top', force3D: true });
-        gsap.set(heroBg, { opacity: 0, force3D: true });
-        gsap.set(fgContainer, { yPercent: 0, scale: 1, opacity: 1, transformOrigin: 'center bottom', force3D: true });
-        gsap.set(whiteBackdrop, { opacity: 0, force3D: true });
+        gsap.set(parallaxBg, { yPercent: 0, scale: 1, opacity: 1, display: 'block', transformOrigin: 'center top', force3D: true });
+        gsap.set(heroBg, { opacity: 0, display: 'block', force3D: true });
+        gsap.set(fgContainer, { yPercent: 0, scale: 1, opacity: 1, display: 'block', transformOrigin: 'center bottom', force3D: true });
+        gsap.set(whiteBackdrop, { opacity: 0, display: 'block', force3D: true });
         gsap.set(bigLogo, {
           xPercent: -50,
           yPercent: -50,
           x: 0,
           y: 0,
           opacity: 0,
+          display: 'flex',
           scale: 0.85,
           transformOrigin: '50% 50%',
           force3D: true,
         });
         gsap.set(heroContent, { opacity: 0, y: 28, force3D: true });
-        if (textVignette) gsap.set(textVignette, { opacity: 0, force3D: true });
+        if (textVignette) gsap.set(textVignette, { opacity: 0, display: 'block', force3D: true });
+
+        let isCompleting = false;
+
+        const completeParallax = (self: ScrollTrigger) => {
+          if (isCompleting) return;
+          isCompleting = true;
+
+          try {
+            sessionStorage.setItem('namo_parallax_done', 'true');
+          } catch {}
+
+          const runway = self.end - self.start;
+          const currentY = window.scrollY || window.pageYOffset;
+          const targetY = Math.max(0, currentY - runway);
+
+          // Kill ScrollTrigger and timeline to remove pinSpacing
+          const st = tl.scrollTrigger;
+          if (st) {
+            st.kill();
+          }
+          tl.kill();
+
+          // Set all visual elements to their finalized, completed state
+          gsap.set(whiteBackdrop, { opacity: 0, display: 'none' });
+          gsap.set(bigLogo, { opacity: 0, display: 'none' });
+          gsap.set(parallaxBg, { opacity: 0, display: 'none' });
+          gsap.set(fgContainer, { opacity: 0, display: 'none' });
+          gsap.set(heroBg, { opacity: 1, display: 'block' });
+          gsap.set(heroContent, { opacity: 1, y: 0, clearProps: 'transform' });
+          if (textVignette) gsap.set(textVignette, { opacity: 1, display: 'block' });
+
+          const navEl = document.getElementById('global-navbar');
+          if (navEl) {
+            navEl.style.opacity = '1';
+            navEl.style.pointerEvents = 'auto';
+          }
+
+          if (wrapper) {
+            wrapper.style.height = 'auto';
+            wrapper.style.minHeight = '100vh';
+          }
+          if (stage) {
+            stage.style.position = 'relative';
+            stage.style.height = '100vh';
+            stage.style.transform = 'none';
+            stage.style.top = '0';
+            stage.style.left = '0';
+          }
+
+          // Adjust scroll position synchronously so user experiences zero visual jump
+          const lenis = (window as any).lenis;
+          if (lenis) {
+            lenis.scrollTo(targetY, { immediate: true, force: true });
+          } else {
+            window.scrollTo({ top: targetY, left: 0, behavior: 'instant' as ScrollBehavior });
+          }
+
+          setIsParallaxDone(true);
+
+          requestAnimationFrame(() => {
+            ScrollTrigger.refresh();
+            if (lenis) lenis.resize();
+          });
+        };
 
         // Master Pinned Scroll Timeline with Expanded Runway and Enhanced Scrub Damping
         const tl = gsap.timeline({
@@ -195,7 +310,16 @@ export const NamoParallaxHero: React.FC = () => {
             scrub: 1.8,
             anticipatePin: 1,
             invalidateOnRefresh: true,
+            onLeave: (self) => {
+              completeParallax(self);
+            },
             onUpdate: (self) => {
+              // As soon as the hero is revealed and settled, complete the intro so scrolling back never triggers it!
+              if (self.progress >= 0.95 && !isCompleting) {
+                completeParallax(self);
+                return;
+              }
+
               const navEl = document.getElementById('global-navbar');
               if (!navEl) return;
 
@@ -339,7 +463,7 @@ export const NamoParallaxHero: React.FC = () => {
         );
 
         // =======================================================================
-        // PHASE 5: Warm Ivory Glow FADES OUT & Golden Mists FADES IN (0.58 -> 0.78)
+        // PHASE 5: Warm Ivory Glow FADES OUT & Farmland FADES IN (0.58 -> 0.78)
         // Strictly keeping Warm Ivory Glow ONLY on the logo background!
         // Parallax sunrise background is swapped out for Golden Mists Over Mountain Forests!
         // =======================================================================
@@ -373,8 +497,8 @@ export const NamoParallaxHero: React.FC = () => {
         );
 
         // =======================================================================
-        // PHASE 6: Home Page Hero Section Texts FADE IN on Golden Mists (0.72 -> 0.88)
-        // Displays NAMO ORGANIC headline, badge, subtitle, paragraph, CTA on Golden Mists!
+        // PHASE 6: Home Page Hero Section Texts FADE IN (0.72 -> 0.88)
+        // Displays NAMO ORGANIC headline, badge, subtitle, paragraph, CTA on Farmland!
         // =======================================================================
         if (textVignette) {
           tl.fromTo(
@@ -417,7 +541,7 @@ export const NamoParallaxHero: React.FC = () => {
         navEl.style.pointerEvents = 'auto';
       }
     };
-  }, []);
+  }, [isParallaxDone]);
 
   return (
     <section
@@ -446,69 +570,163 @@ export const NamoParallaxHero: React.FC = () => {
         }}
       >
         {/* ===================================================================
-            LAYER 1A (PARALLAX BACKGROUND): 
-            Desktop: Translucent NAMO Over Misty Mountain Sunrise
-            Mobile: Golden Mists Over Mountain Forests
-            ONLY in the parallax effect background!
+            PARALLAX INTRO ONLY LAYERS:
+            Only mounted when user opens website newly. Once completed, they are removed.
             =================================================================== */}
-        <div
-          style={{
-            position: 'absolute',
-            inset: 0,
-            width: '100%',
-            height: '100%',
-            overflow: 'hidden',
-            zIndex: 1,
-            pointerEvents: 'none',
-          }}
-        >
-          <picture
-            style={{
-              position: 'absolute',
-              inset: 0,
-              width: '100%',
-              height: '100%',
-              display: 'block',
-              overflow: 'hidden',
-            }}
-          >
-            {/* Mobile View: Golden Mists Over Mountain Forests */}
-            <source
-              media="(max-width: 768px)"
-              srcSet="/assets/Golden%20Mists%20Over%20Mountain%20Forests.png"
-            />
-            {/* Desktop View: Translucent NAMO Over Misty Mountain Sunrise */}
-            <source
-              media="(min-width: 769px)"
-              srcSet="/assets/Translucent%20NAMO%20Over%20Misty%20Mountain%20Sunrise.png"
-            />
-            <img
-              ref={parallaxBgRef}
-              src={
-                isMobile
-                  ? '/assets/Golden Mists Over Mountain Forests.png'
-                  : '/assets/Translucent NAMO Over Misty Mountain Sunrise.png'
-              }
-              alt={
-                isMobile
-                  ? 'Golden Mists Over Mountain Forests'
-                  : 'Translucent NAMO Over Misty Mountain Sunrise'
-              }
+        {!isParallaxDone && (
+          <>
+            {/* LAYER 1A (PARALLAX BACKGROUND) */}
+            <div
               style={{
                 position: 'absolute',
-                left: 0,
-                bottom: 0,
+                inset: 0,
                 width: '100%',
                 height: '100%',
-                objectFit: 'cover',
-                objectPosition: 'center 45%',
-                willChange: 'transform, opacity',
-                transform: 'translate3d(0, 0, 0)',
-                display: 'block',
+                overflow: 'hidden',
+                zIndex: 1,
+                pointerEvents: 'none',
               }}
-            />
-          </picture>
-        </div>
+            >
+              <picture
+                style={{
+                  position: 'absolute',
+                  inset: 0,
+                  width: '100%',
+                  height: '100%',
+                  display: 'block',
+                  overflow: 'hidden',
+                }}
+              >
+                {/* Mobile View: Golden Mists Over Mountain Forests */}
+                <source
+                  media="(max-width: 768px)"
+                  srcSet="/assets/Golden%20Mists%20Over%20Mountain%20Forests.png"
+                />
+                {/* Desktop View: Translucent NAMO Over Misty Mountain Sunrise */}
+                <source
+                  media="(min-width: 769px)"
+                  srcSet="/assets/Translucent%20NAMO%20Over%20Misty%20Mountain%20Sunrise.png"
+                />
+                <img
+                  ref={parallaxBgRef}
+                  src={
+                    isMobile
+                      ? '/assets/Golden Mists Over Mountain Forests.png'
+                      : '/assets/Translucent NAMO Over Misty Mountain Sunrise.png'
+                  }
+                  alt={
+                    isMobile
+                      ? 'Golden Mists Over Mountain Forests'
+                      : 'Translucent NAMO Over Misty Mountain Sunrise'
+                  }
+                  style={{
+                    position: 'absolute',
+                    left: 0,
+                    bottom: 0,
+                    width: '100%',
+                    height: '100%',
+                    objectFit: 'cover',
+                    objectPosition: 'center 45%',
+                    willChange: 'transform, opacity',
+                    transform: 'translate3d(0, 0, 0)',
+                    display: 'block',
+                  }}
+                />
+              </picture>
+            </div>
+
+            {/* LAYER 3 (FOREGROUND): Lush Forest Floor Border Overlay */}
+            <div
+              ref={fgContainerRef}
+              style={{
+                position: 'absolute',
+                inset: 0,
+                width: '100%',
+                height: '100%',
+                overflow: 'hidden',
+                zIndex: 4,
+                pointerEvents: 'none',
+              }}
+            >
+              <img
+                ref={fgImgRef}
+                src="/assets/Lush Forest Floor Border Overlay.png"
+                alt="Lush Forest Floor Border Overlay"
+                style={{
+                  position: 'absolute',
+                  left: 0,
+                  bottom: 0,
+                  width: '100%',
+                  height: '100%',
+                  objectFit: 'cover',
+                  objectPosition: 'center bottom',
+                  willChange: 'transform',
+                  transform: 'translate3d(0, 0, 0)',
+                  display: 'block',
+                }}
+              />
+            </div>
+
+            {/* LAYER 4: Warm Ivory Glow Backdrop (LOGO BACKGROUND ONLY!) */}
+            <div
+              ref={whiteBackdropRef}
+              style={{
+                position: 'absolute',
+                inset: 0,
+                zIndex: 5,
+                opacity: 0,
+                pointerEvents: 'none',
+                overflow: 'hidden',
+                backgroundColor: '#F8F6F0',
+                willChange: 'opacity',
+              }}
+            >
+              <img
+                src="/assets/Warm Ivory Glow Background.png"
+                alt="Warm Ivory Glow Background"
+                style={{
+                  width: '100%',
+                  height: '100%',
+                  objectFit: 'cover',
+                  objectPosition: 'center center',
+                  display: 'block',
+                }}
+              />
+            </div>
+
+            {/* LAYER 5: Big Center NAMO Logo */}
+            <div
+              ref={bigLogoRef}
+              style={{
+                position: 'absolute',
+                top: '50%',
+                left: '50%',
+                transform: 'translate(-50%, -50%)',
+                zIndex: 6,
+                opacity: 0,
+                pointerEvents: 'none',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                willChange: 'transform, opacity',
+              }}
+            >
+              <img
+                src="/assets/Fashions__11_-removebg-preview.png"
+                alt="NAMO Natural Agriculture & Modern Organic"
+                style={{
+                  width: '240px',
+                  height: '240px',
+                  maxWidth: 'min(70vw, 300px)',
+                  maxHeight: 'min(70vw, 300px)',
+                  objectFit: 'contain',
+                  display: 'block',
+                  filter: 'drop-shadow(0 14px 28px rgba(34, 46, 20, 0.10))',
+                }}
+              />
+            </div>
+          </>
+        )}
 
         {/* ===================================================================
             LAYER 1B (HERO SECTION BACKGROUND): Light-Themed Organic Farmland
@@ -538,7 +756,7 @@ export const NamoParallaxHero: React.FC = () => {
               objectFit: 'cover',
               objectPosition: isMobile ? '65% center' : 'center center',
               willChange: 'opacity',
-              opacity: 0,
+              opacity: isParallaxDone ? 1 : 0,
               display: 'block',
             }}
           />
@@ -558,111 +776,10 @@ export const NamoParallaxHero: React.FC = () => {
               ? 'linear-gradient(to bottom, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.82) 48%, rgba(255, 255, 255, 0.20) 100%)'
               : 'linear-gradient(to right, rgba(255, 255, 255, 0.96) 0%, rgba(255, 255, 255, 0.88) 38%, rgba(255, 255, 255, 0.35) 62%, transparent 85%)',
             pointerEvents: 'none',
-            opacity: 0,
+            opacity: isParallaxDone ? 1 : 0,
             willChange: 'opacity',
           }}
         />
-
-        {/* ===================================================================
-            LAYER 3 (FOREGROUND): Lush Forest Floor Border Overlay
-            Merged seamlessly at the bottom edge during initial state
-            =================================================================== */}
-        <div
-          ref={fgContainerRef}
-          style={{
-            position: 'absolute',
-            inset: 0,
-            width: '100%',
-            height: '100%',
-            overflow: 'hidden',
-            zIndex: 4,
-            pointerEvents: 'none',
-          }}
-        >
-          <img
-            ref={fgImgRef}
-            src="/assets/Lush Forest Floor Border Overlay.png"
-            alt="Lush Forest Floor Border Overlay"
-            style={{
-              position: 'absolute',
-              left: 0,
-              bottom: 0,
-              width: '100%',
-              height: '100%',
-              objectFit: 'cover',
-              objectPosition: 'center bottom',
-              willChange: 'transform',
-              transform: 'translate3d(0, 0, 0)',
-              display: 'block',
-            }}
-          />
-        </div>
-
-        {/* ===================================================================
-            LAYER 4: Warm Ivory Glow Backdrop (LOGO BACKGROUND ONLY!)
-            Fades in when scrolling for center logo, then FADES OUT as logo flies up!
-            Never shown on the home page hero section!
-            =================================================================== */}
-        <div
-          ref={whiteBackdropRef}
-          style={{
-            position: 'absolute',
-            inset: 0,
-            zIndex: 5,
-            opacity: 0,
-            pointerEvents: 'none',
-            overflow: 'hidden',
-            backgroundColor: '#F8F6F0',
-            willChange: 'opacity',
-          }}
-        >
-          <img
-            src="/assets/Warm Ivory Glow Background.png"
-            alt="Warm Ivory Glow Background"
-            style={{
-              width: '100%',
-              height: '100%',
-              objectFit: 'cover',
-              objectPosition: 'center center',
-              display: 'block',
-            }}
-          />
-        </div>
-
-        {/* ===================================================================
-            LAYER 5: Big Center NAMO Logo
-            Positioned dead center, appears over Warm Ivory Glow, then FLIES into Navbar Center!
-            =================================================================== */}
-        <div
-          ref={bigLogoRef}
-          style={{
-            position: 'absolute',
-            top: '50%',
-            left: '50%',
-            transform: 'translate(-50%, -50%)',
-            zIndex: 6,
-            opacity: 0,
-            pointerEvents: 'none',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            willChange: 'transform, opacity',
-          }}
-        >
-          <img
-            src="/assets/Fashions__11_-removebg-preview.png"
-            alt="NAMO Natural Agriculture & Modern Organic"
-            style={{
-              width: '240px',
-              height: '240px',
-              maxWidth: 'min(70vw, 300px)',
-              maxHeight: 'min(70vw, 300px)',
-              objectFit: 'contain',
-              display: 'block',
-              filter: 'drop-shadow(0 14px 28px rgba(34, 46, 20, 0.10))',
-            }}
-          />
-        </div>
 
         {/* ===================================================================
             LAYER 6: HOME PAGE HERO SECTION — LIGHT THEMED ORGANIC SHOWCASE
@@ -682,14 +799,14 @@ export const NamoParallaxHero: React.FC = () => {
             maxWidth: '1560px',
             margin: '0 auto',
             padding: isMobile
-              ? 'clamp(7.6rem, 14vh, 8.8rem) 1rem 1.25rem 1rem'
-              : 'clamp(4.8rem, 8vh, 6.2rem) clamp(1.8rem, 3.8vw, 4.5rem) clamp(1.5rem, 3.2vh, 2.5rem)',
+              ? 'clamp(6.8rem, 13vh, 8.2rem) 1rem 1.25rem 1rem'
+              : 'clamp(7.4rem, 13.5vh, 9.0rem) clamp(1.8rem, 3.5vw, 4.5rem) clamp(1.2rem, 2.5vh, 2.0rem)',
             display: 'flex',
             flexDirection: isMobile ? 'column' : 'row',
             alignItems: 'center',
             justifyContent: isMobile ? 'space-between' : 'space-between',
             boxSizing: 'border-box',
-            opacity: 0,
+            opacity: isParallaxDone ? 1 : 0,
             overflowY: isMobile ? 'auto' : 'hidden',
             overflowX: 'hidden',
             WebkitOverflowScrolling: 'touch',
@@ -703,7 +820,7 @@ export const NamoParallaxHero: React.FC = () => {
             style={{
               flex: isMobile ? 'none' : '0 1 54%',
               width: '100%',
-              maxWidth: isMobile ? '560px' : '660px',
+              maxWidth: isMobile ? '560px' : '640px',
               display: 'flex',
               flexDirection: 'column',
               justifyContent: 'center',
@@ -725,11 +842,11 @@ export const NamoParallaxHero: React.FC = () => {
               <h1
                 style={{
                   fontFamily: 'var(--font-display, "Plus Jakarta Sans", sans-serif)',
-                  fontSize: isMobile ? 'clamp(1.30rem, 5.0vw, 1.60rem)' : 'clamp(2.35rem, 3.4vw, 3.35rem)',
+                  fontSize: isMobile ? 'clamp(1.30rem, 5.0vw, 1.60rem)' : 'clamp(2.15rem, 3.0vw, 3.10rem)',
                   fontWeight: 800,
                   letterSpacing: '-0.025em',
                   color: '#18240A',
-                  margin: isMobile ? '0 0 0.15rem 0' : '0 0 0.6rem 0',
+                  margin: isMobile ? '0 0 0.15rem 0' : '0 0 0.45rem 0',
                   lineHeight: isMobile ? 1.15 : 1.12,
                   textShadow: '0 2px 18px rgba(255, 255, 255, 0.95)',
                   textAlign: isMobile ? 'center' : 'left',
@@ -751,10 +868,10 @@ export const NamoParallaxHero: React.FC = () => {
               <div
                 style={{
                   color: '#4E6E10',
-                  fontSize: isMobile ? '0.72rem' : 'clamp(1.0rem, 1.25vw, 1.2rem)',
+                  fontSize: isMobile ? '0.72rem' : 'clamp(0.95rem, 1.15vw, 1.12rem)',
                   fontWeight: 700,
                   letterSpacing: '0.02em',
-                  marginBottom: isMobile ? '0.30rem' : '1.1rem',
+                  marginBottom: isMobile ? '0.30rem' : '0.85rem',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: isMobile ? 'center' : 'flex-start',
@@ -767,11 +884,11 @@ export const NamoParallaxHero: React.FC = () => {
               {/* Product Narrative */}
               <p
                 style={{
-                  fontSize: isMobile ? '0.76rem' : 'clamp(1.02rem, 1.18vw, 1.14rem)',
-                  lineHeight: isMobile ? 1.40 : 1.68,
+                  fontSize: isMobile ? '0.76rem' : 'clamp(0.96rem, 1.08vw, 1.06rem)',
+                  lineHeight: isMobile ? 1.40 : 1.60,
                   color: '#28381A',
-                  maxWidth: isMobile ? '520px' : '620px',
-                  margin: isMobile ? '0 auto 0.55rem auto' : '0 0 1.75rem 0',
+                  maxWidth: isMobile ? '520px' : '590px',
+                  margin: isMobile ? '0 auto 0.55rem auto' : '0 0 1.4rem 0',
                   fontWeight: 450,
                   textAlign: isMobile ? 'center' : 'left',
                   display: isMobile ? '-webkit-box' : 'block',
@@ -790,9 +907,9 @@ export const NamoParallaxHero: React.FC = () => {
                   display: 'grid',
                   gridTemplateColumns: isMobile ? 'repeat(3, minmax(0, 1fr))' : 'repeat(3, 1fr)',
                   gap: isMobile ? '0.35rem' : 'clamp(0.65rem, 1vw, 0.9rem)',
-                  maxWidth: isMobile ? '100%' : '620px',
+                  maxWidth: isMobile ? '100%' : '590px',
                   width: '100%',
-                  marginBottom: isMobile ? '0.55rem' : '2.1rem',
+                  marginBottom: isMobile ? '0.55rem' : '1.65rem',
                 }}
               >
                 {heroProducts[activeProductIndex].specs.map((spec, i) => (
@@ -938,9 +1055,9 @@ export const NamoParallaxHero: React.FC = () => {
               className="hero-showcase-inner"
               style={{
                 position: 'relative',
-                width: isMobile ? '100%' : 'clamp(380px, 38vw, 540px)',
+                width: isMobile ? '100%' : 'clamp(360px, 36vw, 500px)',
                 maxWidth: isMobile ? '360px' : 'none',
-                height: isMobile ? 'clamp(245px, 32vh, 290px)' : 'clamp(480px, 64vh, 620px)',
+                height: isMobile ? 'clamp(235px, 30vh, 275px)' : 'clamp(380px, 48vh, 480px)',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
@@ -955,11 +1072,11 @@ export const NamoParallaxHero: React.FC = () => {
                 className="stage-nav-arrow prev-arrow"
                 style={{
                   position: 'absolute',
-                  left: isMobile ? 'clamp(4px, 1.8vw, 10px)' : '-24px',
+                  left: isMobile ? 'clamp(4px, 1.8vw, 10px)' : '-20px',
                   top: '50%',
                   transform: 'translateY(-50%)',
-                  width: isMobile ? '38px' : '52px',
-                  height: isMobile ? '38px' : '52px',
+                  width: isMobile ? '38px' : '50px',
+                  height: isMobile ? '38px' : '50px',
                   borderRadius: '50%',
                   backgroundColor: 'rgba(255, 255, 255, 0.95)',
                   backdropFilter: 'blur(10px)',
@@ -975,7 +1092,7 @@ export const NamoParallaxHero: React.FC = () => {
                   transition: 'all 0.25s ease',
                 }}
               >
-                <ChevronLeft size={isMobile ? 20 : 30} color="#1B4D35" />
+                <ChevronLeft size={isMobile ? 20 : 28} color="#1B4D35" />
               </button>
 
               <button
@@ -985,11 +1102,11 @@ export const NamoParallaxHero: React.FC = () => {
                 className="stage-nav-arrow next-arrow"
                 style={{
                   position: 'absolute',
-                  right: isMobile ? 'clamp(4px, 1.8vw, 10px)' : '-24px',
+                  right: isMobile ? 'clamp(4px, 1.8vw, 10px)' : '-20px',
                   top: '50%',
                   transform: 'translateY(-50%)',
-                  width: isMobile ? '38px' : '52px',
-                  height: isMobile ? '38px' : '52px',
+                  width: isMobile ? '38px' : '50px',
+                  height: isMobile ? '38px' : '50px',
                   borderRadius: '50%',
                   backgroundColor: 'rgba(255, 255, 255, 0.95)',
                   backdropFilter: 'blur(10px)',
@@ -1005,7 +1122,7 @@ export const NamoParallaxHero: React.FC = () => {
                   transition: 'all 0.25s ease',
                 }}
               >
-                <ChevronRight size={isMobile ? 20 : 30} color="#1B4D35" />
+                <ChevronRight size={isMobile ? 20 : 28} color="#1B4D35" />
               </button>
 
               {/* 3 Showcase Bottles (Proper Center Mid, Proportional Size on Mobile, No Badges) */}
@@ -1025,14 +1142,14 @@ export const NamoParallaxHero: React.FC = () => {
                       transform: isCenter
                         ? (isMobile
                           ? 'translate(-50%, -50%) scale(1.0) rotate(0deg)'
-                          : 'translate(-50%, -50%) scale(1.08) rotate(0deg)')
+                          : 'translate(-50%, -50%) scale(1.02) rotate(0deg)')
                         : isRight
                           ? (isMobile
                             ? 'translate(calc(-50% + clamp(66px, 18vw, 82px)), -50%) scale(0.70) rotate(3deg)'
-                            : 'translate(calc(-50% + clamp(125px, 11vw, 165px)), -50%) scale(0.72) rotate(4deg)')
+                            : 'translate(calc(-50% + clamp(115px, 9.5vw, 150px)), -50%) scale(0.74) rotate(4deg)')
                           : (isMobile
                             ? 'translate(calc(-50% - clamp(66px, 18vw, 82px)), -50%) scale(0.70) rotate(-3deg)'
-                            : 'translate(calc(-50% - clamp(125px, 11vw, 165px)), -50%) scale(0.72) rotate(-4deg)'),
+                            : 'translate(calc(-50% - clamp(115px, 9.5vw, 150px)), -50%) scale(0.74) rotate(-4deg)'),
                       zIndex: isCenter ? 12 : 5,
                       opacity: isCenter ? 1 : 0.88,
                       cursor: isCenter ? 'default' : 'pointer',
@@ -1046,14 +1163,14 @@ export const NamoParallaxHero: React.FC = () => {
                       if (!isCenter) handleSelectProduct(idx);
                     }}
                   >
-                    {/* Bottle Graphic (Transparent PNG, Sized to fit screen properly) */}
+                    {/* Bottle Graphic (Transparent PNG, Sized to fit comfortably below navbar) */}
                     <img
                       src={p.image}
                       alt={p.alt}
                       style={{
                         height: isCenter
-                          ? (isMobile ? 'clamp(225px, 29vh, 255px)' : 'clamp(450px, 60vh, 580px)')
-                          : (isMobile ? 'clamp(145px, 19vh, 168px)' : 'clamp(320px, 42vh, 410px)'),
+                          ? (isMobile ? 'clamp(210px, 27vh, 240px)' : 'clamp(350px, 45vh, 440px)')
+                          : (isMobile ? 'clamp(135px, 18vh, 155px)' : 'clamp(250px, 32vh, 310px)'),
                         width: 'auto',
                         maxWidth: '100%',
                         objectFit: 'contain',
@@ -1070,12 +1187,12 @@ export const NamoParallaxHero: React.FC = () => {
                       <div
                         style={{
                           width: '65%',
-                          height: isMobile ? '14px' : '22px',
+                          height: isMobile ? '12px' : '18px',
                           borderRadius: '50%',
                           background:
                             'radial-gradient(ellipse at center, rgba(20, 35, 15, 0.38) 0%, rgba(20, 35, 15, 0.10) 50%, transparent 75%)',
                           filter: isMobile ? 'blur(3px)' : 'blur(5px)',
-                          marginTop: isMobile ? '-6px' : '-10px',
+                          marginTop: isMobile ? '-5px' : '-8px',
                           pointerEvents: 'none',
                         }}
                       />
@@ -1083,12 +1200,12 @@ export const NamoParallaxHero: React.FC = () => {
                       <div
                         style={{
                           width: '54%',
-                          height: isMobile ? '10px' : '14px',
+                          height: isMobile ? '8px' : '12px',
                           borderRadius: '50%',
                           background:
                             'radial-gradient(ellipse at center, rgba(20, 35, 15, 0.28) 0%, transparent 70%)',
                           filter: 'blur(3px)',
-                          marginTop: isMobile ? '-4px' : '-6px',
+                          marginTop: isMobile ? '-3px' : '-5px',
                           pointerEvents: 'none',
                         }}
                       />
